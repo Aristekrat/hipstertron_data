@@ -1,0 +1,6 @@
+*.log
+*.sql
+*.sqlite
+
+dev/**
+__pycache__/**

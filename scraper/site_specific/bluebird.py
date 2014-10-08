@@ -1,9 +1,8 @@
-import sitex
-import artistx
-import datex
-import utilityx
+import sys
+sys.path.append("..")
+from utility import sitex, artistx, datex, utilityx
 
-#Note - lengths are equal
+# Fully functional
 
 urls = ["http://www.bluebirdtheater.net/events", 
 "http://www.bluebirdtheater.net/events/index/10", 
@@ -35,4 +34,6 @@ dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
 
 dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
 
-#dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
+dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
+
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, 2)

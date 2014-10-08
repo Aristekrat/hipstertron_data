@@ -1,11 +1,12 @@
-import sitex
-import artistx
-import datex
-import utilityx
+import sys
+sys.path.append("..")
+from utility import sitex, artistx, datex, utilityx
 
-urls = ["http://www.fiddlersgreenamp.com/events"]
+# Fully functional
 
-artist_selector = ".entry h3"
+urls = ["http://www.1stbankcenter.com/events", "http://www.1stbankcenter.com/events/index/10"]
+
+artist_selector = ".info h3 a"
 
 date_selector = ".date"
 
@@ -27,7 +28,6 @@ dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
 
 dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
 
-print(artists_stripped)
-print(dates_stripped_ends)
+dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
 
-#dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, 5)

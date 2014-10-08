@@ -1,13 +1,12 @@
-import sitex
-import artistx
-import datex
-import utilityx
+import sys
+sys.path.append("..")
+from utility import sitex, artistx, datex, utilityx
 
-#Note - lengths are equal
+#Note, currently aren't any shows listed so fiddler's should properly be returning 0 results. 
 
-urls = ["http://www.1stbankcenter.com/events", "http://www.1stbankcenter.com/events/index/10"]
+urls = ["http://www.fiddlersgreenamp.com/events"]
 
-artist_selector = ".info h3 a"
+artist_selector = ".entry h3"
 
 date_selector = ".date"
 
@@ -29,4 +28,6 @@ dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
 
 dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
 
-#dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
+dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
+
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, 6)

@@ -1,12 +1,10 @@
-import sitex
-import artistx
-import datex
-import utilityx
+import sys
+sys.path.append("..")
+from utility import sitex, artistx, datex, utilityx
 
-#Note, lengths are currently equal, 09/01/14
+#Red Rocks, dates are being duplicated and strangely the number matches the # of artists. 
 
-urls = ["http://redrocksonline.com/concerts-events/calendar", 
-"http://redrocksonline.com/concerts-events/calendar/2014/09",
+urls = ["http://redrocksonline.com/concerts-events/calendar/2014/09",
 "http://redrocksonline.com/concerts-events/calendar/2014/10"]
 
 artist_selector = "li .concert"
@@ -59,3 +57,7 @@ dates_stripped_html = utilityx.strip_html(dates_html)
 dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
 
 dates_special_mod1 = redrocks_strip_dates(dates_stripped_datechars)
+
+dates_datetime = datex.convert_to_datetime(dates_special_mod1)
+
+utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, 9)
