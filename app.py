@@ -4,6 +4,7 @@ from flask.ext.cors import CORS
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
+import os
 
 app = Flask(__name__)
 CORS(app, resources='/*', headers='Content-Type')
@@ -42,8 +43,10 @@ def sendEmail():
 	db.session.commit()
 	return "Complete"
 
+   
 # Server Start
 if __name__ == '__main__':
-  http_server = HTTPServer(WSGIContainer(app))
-  http_server.listen($PORT or 8000)
-  IOLoop.instance().start()
+	port = int(os.environ.get("PORT", 8000))
+	http_server = HTTPServer(WSGIContainer(app))
+	http_server.listen(port)
+	IOLoop.instance().start()
