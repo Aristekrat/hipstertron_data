@@ -10,7 +10,6 @@ PyICU==1.5
 SQLAlchemy==0.9.7
 Werkzeug==0.9.6
 alembic==0.6.7
-apt-clone==0.2.1
 beautifulsoup4==4.2.1
 certifi==14.05.14
 chardet==2.0.1
