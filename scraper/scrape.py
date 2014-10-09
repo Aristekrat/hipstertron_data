@@ -1,5 +1,5 @@
-exec(compile(open('./site_specific/gothic.py', "rb").read(), 'gothic.py', 'exec'))
-exec(compile(open('/site_specific/fillmore.py', "rb").read(), 'fillmore.py', 'exec'))
+exec(compile(open('./scraper/site_specific/gothic.py', "rb").read(), 'gothic.py', 'exec'))
+exec(compile(open('scraper/site_specific/fillmore.py', "rb").read(), 'fillmore.py', 'exec'))
 exec(compile(open('site_specific/firstbank.py', "rb").read(), 'firstbank.py', 'exec'))
 exec(compile(open('site_specific/bluebird.py', "rb").read(), 'bluebird.py', 'exec'))
 exec(compile(open('site_specific/ogden.py', "rb").read(), 'ogden.py', 'exec'))
