@@ -1,6 +1,6 @@
 import sys
 sys.path.append("../..")
-from app import Denver_Concerts
+from models import Denver_Concerts
 from app import db
 
 def strip_html(results):
