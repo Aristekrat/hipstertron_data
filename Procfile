@@ -1,4 +1,4 @@
-web: python3 app.py
-scrape: python3 ./scraper/scrape.py
-create_db: python3 db_create.py
-add_venues: python3 denver_venues.py
+web: python app.py
+scrape: python ./scraper/scrape.py
+create_db: python db_create.py
+add_venues: python denver_venues.py
