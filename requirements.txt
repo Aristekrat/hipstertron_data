@@ -13,9 +13,7 @@ alembic==0.6.7
 beautifulsoup4==4.2.1
 certifi==14.05.14
 colorama==0.2.5
-defer==1.0.6
 dirspec==13.10
-gunicorn==19.1.1
 html5lib==0.999
 httplib2==0.8
 itsdangerous==0.24
