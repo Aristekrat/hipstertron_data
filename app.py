@@ -37,8 +37,8 @@ def returnConcerts():
 
 @app.route('/sendEmail', methods=['POST'])
 def sendEmail():
-	userEmail = request.get_json()
-	newEmail = models.Emails(email = userEmail)
+	email_data = request.get_json()
+	newEmail = models.Emails(email = email_data['email'], frequency = email_data['frequency'])
 	db.session.add(newEmail)
 	db.session.commit()
 	return "Complete"

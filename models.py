@@ -27,5 +27,6 @@ class Denver_Concerts(db.Model):
 class Emails(db.Model):
 	__tablename__ = "emails"
 	email = db.Column(db.String(120), nullable=False, primary_key=True)
+	frequency = db.Column(db.String(60), nullable=False)
 
 # db.create_all()
