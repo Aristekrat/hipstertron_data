@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
+from utility import sitex, artistx, datex, utilityx, showlinkx
 
 # Fully functional
 
@@ -11,6 +11,8 @@ urls = ["http://www.ogdentheatre.com/events",
 artist_selector = ".entry h3"
 
 date_selector = ".date"
+
+concert_details_selector = ".entry .buttons a"
 
 site_html = sitex.get_pages(urls)
 
@@ -32,4 +34,8 @@ dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
 
 dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
 
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, 3)
+#Show Links Section#
+
+concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 3)

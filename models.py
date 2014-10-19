@@ -17,6 +17,7 @@ class Denver_Concerts(db.Model):
 	__tablename__ = "denver_concerts"
 	showId = db.Column(db.Integer, primary_key=True)
 	showDate = db.Column(db.Date, nullable=False)
+	showLink = db.Column(db.String(255))
 	band = db.Column(db.String(255), index=True, nullable=False)
 	concertVenueId = db.Column(db.Integer, db.ForeignKey('all_venues.venueId'))
 	concertVenue = db.relationship('Venue', backref=db.backref('concert'))

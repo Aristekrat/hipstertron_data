@@ -17,13 +17,13 @@ def strip_string_ends(results, beginning, end):
 		stripped.append(x)
 	return stripped
 
-def add_concert_to_database(artists, dates, id):
+def add_concert_to_database(artists, dates, showLinks, id):
 	if (len(artists) == len(dates)):
 		for index, artist in enumerate(artists):
 			if (dates[index] == None):
 				continue
 			else:
-				new_show = Denver_Concerts(showDate = dates[index], band = artists[index], concertVenueId = id)
+				new_show = Denver_Concerts(showDate = dates[index], band = artists[index], showLink = showLinks[index], concertVenueId = id)
 				db.session.add(new_show)
 		db.session.commit()
 	else:

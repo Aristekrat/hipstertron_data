@@ -1,10 +1,7 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
+from utility import sitex, artistx, datex, utilityx, showlinkx
 import re
-
-#Note - Date Problems: cannot handle the cavalia entry, it harvest both dates as seperate entries rather than using them as a range.
-# Is not properly harvesting the Katy Perry Sept. 30th date. 
 
 urls = ["http://www.pepsicenter.com/"]
 
@@ -12,6 +9,8 @@ artist_selector = ".image-title a"
 
 date_selector = ".image-line2"
 alt_date_selector = ".image-line3"
+
+concert_details_selector = ".caption .more_info a"
 
 site_html = sitex.get_pages(urls)
 
@@ -81,4 +80,8 @@ dates_format2 = datex.add_year(dates_format1)
 
 dates_datetime = datex.convert_to_datetime(dates_format2)
 
-utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, 8)
+#Show Links Section#
+
+concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+
+utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, concert_details_html, 8)

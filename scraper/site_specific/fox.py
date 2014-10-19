@@ -2,7 +2,7 @@ import sys
 import re
 import calendar
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
+from utility import sitex, artistx, datex, utilityx, showlinkx
 
 #Fox Theater is a special little snowflake and works almost entirely differently from the other venues. Inspect the raw html to discover why.
 
@@ -65,6 +65,18 @@ dates_formatted = format_dates(dates_filtered)
 
 dates_datetime = datex.convert_to_datetime(dates_formatted)
 
-#print(dates_datetime)
+#Show Links
+find_links_pattern = '"TicketUrl":"(.*?)"'
+show_links_raw = re.findall(find_links_pattern, data_var)
 
-#utilityx.add_concert_to_database(artists_stripped, dates_datetime, 10)
+def format_links(results):
+	formatted = []
+	for result in results:
+		#This method of replacing the unicode character's is weird and inefficient, but nothing else worked for me. 
+		x = result.replace('\\u0026', '&')
+		formatted.append(x)
+	return formatted
+
+concert_details_html = format_links(show_links_raw)
+
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 10)

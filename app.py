@@ -4,6 +4,8 @@ from flask.ext.cors import CORS
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
+import time
+import calendar
 import os
 
 app = Flask(__name__)
@@ -33,7 +35,33 @@ def default():
 def returnConcerts():
 	concerts = models.Denver_Concerts.query.order_by(models.Denver_Concerts.showDate)
 	response = prep_concert_response(concerts)
-	return jsonify(concertListings=response)
+	j = calendar.monthrange(2014, 10)
+	x = time.strftime("%Y-%m-%d")
+	x = x.split("-")
+	x[2] = str(j[1])
+	last_of_month = '-'.join(x)
+	y = []
+	for r in response: 
+		if r['date'] > last_of_month:
+			continue
+		else: 
+			y.append(r)
+	return jsonify(concertListings=y)
+
+@app.route('/getConcertsTwo', methods=['GET', 'OPTIONS'])
+def returnNextConcerts():
+	concerts = models.Denver_Concerts.query.order_by(models.Denver_Concerts.showDate)
+	response = prep_concert_response(concerts)
+	j = calendar.monthrange(2014, 10)
+	x = time.strftime("%Y-%m-%d")
+	x = x.split("-")
+	x[2] = str(j[1])
+	last_of_month = '-'.join(x)
+	y = []
+	for r in response: 
+		if r['date'] > last_of_month:
+			y.append(r)
+	return jsonify(concertListings=y)
 
 @app.route('/sendEmail', methods=['POST'])
 def sendEmail():
@@ -42,7 +70,6 @@ def sendEmail():
 	db.session.add(newEmail)
 	db.session.commit()
 	return "Complete"
-
    
 # Server Start
 if __name__ == '__main__':

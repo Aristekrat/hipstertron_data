@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
+from utility import sitex, artistx, datex, utilityx, showlinkx
 
 #Red Rocks, dates are being duplicated and strangely the number matches the # of artists. 
 
@@ -10,6 +10,8 @@ urls = ["http://redrocksonline.com/concerts-events/calendar/2014/09",
 artist_selector = "li .concert"
 
 #date_selector = ".date"
+
+concert_details_selector = "li .concert"
 
 site_html = sitex.get_pages(urls)
 
@@ -60,4 +62,8 @@ dates_special_mod1 = redrocks_strip_dates(dates_stripped_datechars)
 
 dates_datetime = datex.convert_to_datetime(dates_special_mod1)
 
-utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, 9)
+#Show Links Section#
+
+concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+
+utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, concert_details_html, 9)

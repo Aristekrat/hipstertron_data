@@ -1,14 +1,14 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
-
-# Received Error, not functional
+from utility import sitex, artistx, datex, utilityx, showlinkx
 
 urls = ["http://www.fillmoreauditorium.org/events/"]
 
 artist_selector = ".eventInfo h3 a"
 
 date_selector = ".eventInfo strong"
+
+concert_details_selector = ".buyNowTicket a"
 
 def fillmore_modify_string(results):
 	stripped = []
@@ -41,4 +41,8 @@ dates_special_mod1 = fillmore_modify_string(dates_stripped_ends)
 
 dates_datetime = datex.convert_to_datetime(dates_special_mod1)
 
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, 4)
+#Show Links Section#
+
+concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 4)

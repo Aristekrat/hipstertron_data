@@ -1,18 +1,38 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
+from utility import sitex, artistx, datex, utilityx, showlinkx
 
 # Fully functional
 
+#Should write a function to dynamically harvest urls for venues with pagination
 urls = ["http://www.gothictheatre.com/events", 
 "http://www.gothictheatre.com/events/index/10",
 "http://www.gothictheatre.com/events/index/20",
 "http://www.gothictheatre.com/events/index/30",
 "http://www.gothictheatre.com/events/index/40"]
 
+# root_url = ["http://www.gothictheatre.com/events"]
+
 artist_selector = ".entry h3"
 
 date_selector = ".date"
+
+url_selector = ".final .number"
+
+# concert_details_selector = ".entry .buttons a"
+
+# woo = sitex.get_pages(root_url)
+
+# # def scrape_concert_links(page, selector):
+# # 	scraped = []
+# # 	x = page.select(selector)
+# # 	for r in x:
+# # 		scraped.append(r.attrs['href'])
+# # 	return scraped
+
+# foo = showlinkx.scrape_concert_links(woo, url_selector)
+
+# print(foo)
 
 site_html = sitex.get_pages(urls)
 
@@ -34,4 +54,8 @@ dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
 
 dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
 
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, 1)
+#Show Links Section#
+
+concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 1)
