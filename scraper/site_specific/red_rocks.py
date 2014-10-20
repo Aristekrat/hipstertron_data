@@ -4,8 +4,13 @@ from utility import sitex, artistx, datex, utilityx, showlinkx
 
 #Red Rocks, dates are being duplicated and strangely the number matches the # of artists. 
 
-urls = ["http://redrocksonline.com/concerts-events/calendar/2014/09",
-"http://redrocksonline.com/concerts-events/calendar/2014/10"]
+urls = ["http://redrocksonline.com/concerts-events/calendar/2015/04",
+"http://redrocksonline.com/concerts-events/calendar/2015/05",
+"http://redrocksonline.com/concerts-events/calendar/2015/06",
+"http://redrocksonline.com/concerts-events/calendar/2015/07",
+"http://redrocksonline.com/concerts-events/calendar/2015/08",
+"http://redrocksonline.com/concerts-events/calendar/2015/09",
+"http://redrocksonline.com/concerts-events/calendar/2015/10"]
 
 artist_selector = "li .concert"
 
