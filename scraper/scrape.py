@@ -1,7 +1,5 @@
 import os
 
-print("Reached the very top level")
-
 if os.environ['DEV_ENV'] == 'production':
 	prefix = 'scraper/site_specific/'
 elif os.environ['DEV_ENV'] == 'local':

@@ -9,5 +9,5 @@ sys.path.append("scraper/")
 db.engine.execute("DROP TABLE denver_concerts")
 
 db.create_all()
-print("Got past the db part")
+
 exec(compile(open('scraper/scrape.py', "rb").read(), 'scrape.py', 'exec'))
