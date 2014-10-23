@@ -1,6 +1,10 @@
 import models
 from app import db
 
+db.engine.execute("DROP TABLE all_venues")
+
+db.create_all()
+
 def create_denver_venues():
 	gothic = models.Venue(venueName = "Gothic Theatre", street = "3263 S Broadway", city = "Englewood", state = "CO", website = "http://www.gothictheatre.com/events")
 	bluebird = models.Venue(venueName = "Bluebird Theater", street = "3317 E Colfax Ave", city = "Denver", state = "CO", website = "http://www.bluebirdtheater.net/events")

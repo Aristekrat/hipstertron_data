@@ -19,6 +19,8 @@ def strip_unwanted_datechars(results):
 	}
 	stripped = []
 	for result in results:
+		if result == None:
+			result = ""
 		stripped.append(result.translate(remap))
 	return stripped
 
