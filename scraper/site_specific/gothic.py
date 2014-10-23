@@ -2,6 +2,8 @@ import sys
 sys.path.append("..")
 from utility import sitex, artistx, datex, utilityx, showlinkx
 
+print("Reached gothic")
+
 #Selector Library
 artist_selector = ".entry h3"
 
