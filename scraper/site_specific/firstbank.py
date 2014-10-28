@@ -27,6 +27,7 @@ artists_html = artistx.scrape_artists(site_html, artist_selector)
 
 artists_stripped = utilityx.strip_html(artists_html)
 
+
 # Dates Section #
 dates_html = datex.scrape_dates(site_html, date_selector)
 

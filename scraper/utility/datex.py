@@ -11,13 +11,13 @@ def scrape_dates(pages, selector):
 
 # Replaces newlines, tabs, commas, and periods with nothingness
 def strip_unwanted_datechars(results):
+	stripped = []
 	remap = {
 		ord('\n') : None,
 		ord('\t') : None,
 		ord(',') : None,
 		ord('.') : None
 	}
-	stripped = []
 	for result in results:
 		if result == None:
 			result = ""
@@ -27,10 +27,11 @@ def strip_unwanted_datechars(results):
 # Very particular about Month, day, year format. 
 def convert_to_datetime(results):
 	converted = []
+	today_string = time.strftime("%B %d %Y")
+	today_datetime = time.strptime(today_string, "%B %d %Y")
+	
 	for result in results:
 		concert_date = time.strptime(result, "%B %d %Y")
-		today_string = time.strftime("%B %d %Y")
-		today_datetime = time.strptime(today_string, "%B %d %Y")
 		if (today_datetime > concert_date):
 			concert_date = None
 		else: 

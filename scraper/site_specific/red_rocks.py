@@ -2,8 +2,6 @@ import sys
 sys.path.append("..")
 from utility import sitex, artistx, datex, utilityx, showlinkx
 
-#Red Rocks, dates are being duplicated and strangely the number matches the # of artists. 
-
 urls = ["http://redrocksonline.com/concerts-events/calendar/2015/04",
 "http://redrocksonline.com/concerts-events/calendar/2015/05",
 "http://redrocksonline.com/concerts-events/calendar/2015/06",
@@ -30,7 +28,7 @@ artists_special_mod1 = utilityx.strip_string_ends(artists_stripped, 0, 10)
 
 #Dates Section#
 
-# Special Red Rocks functions, really need to find a better way in the future
+# Special Red Rocks functions
 def get_redrocks_dateurls(results):
 	dates = []
 	for result in results: 
