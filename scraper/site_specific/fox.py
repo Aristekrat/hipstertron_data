@@ -27,8 +27,7 @@ def format_artists(results):
 		#This method of replacing the unicode character's is weird and inefficient, but nothing else worked for me. 
 		x = result.replace('\\u0026', '&')
 		x = x.replace("\\u0027", "'")
-		t = x[0] + x[1:].lower()
-		formatted.append(t)
+		formatted.append(x)
 	return formatted
 
 artists_stripped = format_artists(artists_raw)
