@@ -1,5 +1,7 @@
 import os
 
+print("Now running scraper")
+
 if os.environ['DEV_ENV'] == 'production':
 	prefix = 'scraper/site_specific/'
 elif os.environ['DEV_ENV'] == 'local':
