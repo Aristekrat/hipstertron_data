@@ -7,7 +7,7 @@ sys.path.append("scraper/")
 
 print("Script called")
 
-conn = engine.connect()
+conn = db.engine.connect()
 
 conn.execute("DROP TABLE denver_concerts")
 
