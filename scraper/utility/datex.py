@@ -10,6 +10,7 @@ def scrape_dates(pages, selector):
 	return scraped
 
 # Replaces newlines, tabs, commas, and periods with nothingness
+# Move this method to utility
 def strip_unwanted_datechars(results):
 	stripped = []
 	remap = {

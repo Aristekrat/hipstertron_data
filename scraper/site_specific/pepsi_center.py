@@ -63,12 +63,16 @@ def cull_dates(results):
 	culled = []
 	for date in results:
 		components = date.split()
-		for index, component in enumerate(components): 
+		for index, component in enumerate(components):
 			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', component)
 			if (x == None):
 				continue
 			elif (x != None):
-				culled.append(components[index] + " " + components[index + 1])
+				# This monkey patch handles ranges that are formatted as single strings, eg 6-8. Obviously, this is the code version of duct tape.
+				if (len(components[index + 1]) > 2):
+					culled.append(components[index] + " " + components[index + 1][0])
+				else: 
+					culled.append(components[index] + " " + components[index + 1])
 				break
 	return culled
 

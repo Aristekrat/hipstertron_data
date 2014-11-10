@@ -18,11 +18,13 @@ concert_details_selector = ".photo-meta-data h2 a"
 
 site_html = sitex.get_pages(urls)
 
+
 #Artist Section#
 
 artists_html = artistx.scrape_artists(site_html, artist_selector)
 
 artists_stripped = utilityx.strip_html(artists_html)
+
 
 #Dates Section#
 
@@ -42,6 +44,8 @@ def remove_junk(results):
 	return stripped
 
 dates_special_mod1 = remove_junk(dates_stripped_datechars)
+
+
 
 #Show Links Section#
 
