@@ -24,7 +24,7 @@ dates_html = datex.scrape_dates(site_html, date_selector)
 
 dates_stripped_html = utilityx.strip_html(dates_html)
 
-dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
+dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
 dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
 

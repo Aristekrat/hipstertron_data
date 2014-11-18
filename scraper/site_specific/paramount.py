@@ -32,7 +32,7 @@ dates_html = datex.scrape_dates(site_html, date_selector)
 
 dates_stripped_html = utilityx.strip_html(dates_html)
 
-dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
+dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
 # This function removes any result that does not have 'day' in it, most of the non-conforming paramount results don't.
 def remove_junk(results):

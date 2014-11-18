@@ -2,6 +2,8 @@ import time
 from datetime import datetime
 
 #Scrapes dates from a Beautiful Soup object with a css selector
+#TODO - AT Test if not empty
+#TODO - AT Test that none of the values are empty strings or None
 def scrape_dates(pages, selector):
 	scraped = []
 	for page in pages:
@@ -9,38 +11,28 @@ def scrape_dates(pages, selector):
 		scraped.append(date)
 	return scraped
 
-# Replaces newlines, tabs, commas, and periods with nothingness
-# Move this method to utility
-def strip_unwanted_datechars(results):
-	stripped = []
-	remap = {
-		ord('\n') : None,
-		ord('\t') : None,
-		ord(',') : None,
-		ord('.') : None
-	}
-	for result in results:
-		if result == None:
-			result = ""
-		stripped.append(result.translate(remap))
-	return stripped
-
-# Very particular about Month, day, year format. 
+# Very particular about Month, day, year format.
 def convert_to_datetime(results):
 	converted = []
 	today_string = time.strftime("%B %d %Y")
 	today_datetime = time.strptime(today_string, "%B %d %Y")
-	
-	for result in results:
-		concert_date = time.strptime(result, "%B %d %Y")
-		if (today_datetime > concert_date):
-			concert_date = None
+
+	for index, result in enumerate(results):
+		try: 
+			concert_date = time.strptime(result, "%B %d %Y")
+		except ValueError:
+			print("Cannot convert '" + result + "' at item " + str(index) + ". This is the full list: " + results)
 		else: 
-			concert_date = datetime.fromtimestamp(time.mktime(concert_date))
-		converted.append(concert_date)
+			if (today_datetime > concert_date):
+				concert_date = None
+			else: 
+				concert_date = datetime.fromtimestamp(time.mktime(concert_date))
+			converted.append(concert_date)
 	return converted
 
 # Expands shortened month names
+# TODO - Applied test this one by checking if component[0] equals one of the listed months.
+# Note - May want to refactor the way this function handles an input error (in the else clause)
 def format_months(results):
 	formatted = []
 	for date in results:
@@ -69,15 +61,16 @@ def format_months(results):
 		formatted.append(date)
 	return formatted
 
-# Adds the correct year, NOTE this function requires the month be in the proper format first
+# Adds the correct year, this function requires the month be in the proper format first
+# Q - what should this function do in case it receives invalid input? 
 def add_year(results):
 	formatted = []
 	for date in results: 
 		components = date.split()
 		month = components[0]
-		if month == "September" or month == "October" or month == "November" or month == "December":
+		if month == "November" or month == "December":
 			year = " 2014"
-		if month == "January" or month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August":
+		elif month == "January" or month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August" or "September" or month == "October":
 			year = " 2015"
 		formatted.append(date + year)
 	return formatted

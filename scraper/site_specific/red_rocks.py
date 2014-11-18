@@ -59,7 +59,7 @@ dates_html = scrape_redrocks_dates(redrocks_date_pages)
 
 dates_stripped_html = utilityx.strip_html(dates_html)
 
-dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
+dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
 dates_special_mod1 = redrocks_strip_dates(dates_stripped_datechars)
 

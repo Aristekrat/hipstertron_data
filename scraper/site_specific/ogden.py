@@ -27,7 +27,7 @@ artists_html = artistx.scrape_artists(site_html, artist_selector)
 
 artists_stripped_html = utilityx.strip_html(artists_html)
 
-artists_stripped = datex.strip_unwanted_datechars(artists_stripped_html)
+artists_stripped = utilityx.strip_unwanted_chars(artists_stripped_html)
 
 
 # Dates Section #
@@ -46,7 +46,7 @@ def special_strip_html(results):
 
 dates_stripped_html = special_strip_html(dates_html)
 
-dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
+dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
 dates_formatted = datex.format_months(dates_stripped_datechars)
 

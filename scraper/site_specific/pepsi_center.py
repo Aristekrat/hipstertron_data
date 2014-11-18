@@ -38,8 +38,8 @@ alt_dates_html = datex.scrape_dates(site_html, alt_date_selector)
 dates_stripped_html = utilityx.strip_html(dates_html)
 alt_dates_stripped_html = utilityx.strip_html(alt_dates_html)
 
-dates_stripped_datechars = datex.strip_unwanted_datechars(dates_stripped_html)
-alt_dates_stripped_datechars = datex.strip_unwanted_datechars(alt_dates_stripped_html)
+dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
+alt_dates_stripped_datechars = utilityx.strip_unwanted_chars(alt_dates_stripped_html)
 
 # Search for proper date, if none found search backup, if not found there delete. 
 def get_proper_dates(results, alt_results):
