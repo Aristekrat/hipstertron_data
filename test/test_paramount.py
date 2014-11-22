@@ -5,12 +5,9 @@ sys.path.append("..")
 from utility import sitex, artistx, datex, utilityx, showlinkx, selector_library, urls_library, site_specificx
 from test_helpers import utilityh
 
-#Testing idea : check the length of artist and date at every step in its transformation
-#It'd be very good to load the raw html input into a file and pull it from there. I could set up seperate tests for those functions. Pulling it from the site each time is slow.
+selectors = selector_library.paramount
 
-selectors = selector_library.gothic
-
-urls = urls_library.urls["gothic"]
+urls = urls_library.urls["paramount"]
 
 class GothicTestCase(unittest.TestCase):
 

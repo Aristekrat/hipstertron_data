@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx
+from utility import sitex, artistx, datex, utilityx, showlinkx, selector_library, site_specificx, urls_library
 import re
  
 # Paramount has a bunch of special code to format it's handwritten dates.
@@ -30,7 +30,13 @@ artists_stripped = utilityx.strip_html(artists_html)
 
 dates_html = datex.scrape_dates(site_html, date_selector)
 
+print(dates_html)
+
+# The strip function is failing due to an internal html tag <br> so Beautiful Soup can't access string
+# I'll just need to write the date harvester and add it here.
 dates_stripped_html = utilityx.strip_html(dates_html)
+
+print(dates_stripped_html)
 
 dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 

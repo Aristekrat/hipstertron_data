@@ -1,55 +1,27 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
 
-#Selector Library 
-url_selector = "a.page-numbers"
+root_url = urls_library.urls["fillmore"]
 
-artist_selector = ".eventInfo h3 a"
-
-date_selector = ".eventInfo strong"
-
-concert_details_selector = ".buyNowTicket a"
-
+selectors = selector_library.fillmore
 
 # URL Harvest #
-root_url = ["http://www.fillmoreauditorium.org/events/"]
-
 root = sitex.get_pages(root_url)
 
-#The fillmore has relative links and it currently doesn't have a unique css selector for pages
-#Thus, a site specific function is required
-def scrape_concert_pages(root_page, root_url, selector):
-	scraped = [root_url[0]]
-	x = root_page[0].select(selector)
-	for r in x:
-		if r.string != ">":
-			scraped.append("http://www.fillmoreauditorium.org" + r.attrs['href'])
-	return scraped
-
-urls = scrape_concert_pages(root, root_url, url_selector)
+urls = site_specificx.scrape_concert_pages(root, root_url, selectors["page_url"])
 
 site_html = sitex.get_pages(urls)
 
 
 # Artist Section #
-artists_html = artistx.scrape_artists(site_html, artist_selector)
+artists_html = artistx.scrape_artists(site_html, selectors["artist"])
 
 artists_stripped = utilityx.strip_html(artists_html)
 
 
 # Dates Section #
-# Why is this thing necessary? 
-def fillmore_modify_string(results):
-	stripped = []
-	for result in results:
-		result = result.split(' ')
-		result.insert(-1, result[0])
-		del result[0]
-		stripped.append(" ".join(result))
-	return stripped
-
-dates_html = datex.scrape_dates(site_html, date_selector)
+dates_html = datex.scrape_dates(site_html, selectors["date"])
 
 dates_stripped_html = utilityx.strip_html(dates_html)
 
@@ -57,13 +29,13 @@ dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
 dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 0, 9)
 
-dates_special_mod1 = fillmore_modify_string(dates_stripped_ends)
+dates_special_mod1 = site_specificx.fillmore_modify_string(dates_stripped_ends)
 
 dates_datetime = datex.convert_to_datetime(dates_special_mod1)
 
 
 # Show Links Section #
-concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["ticket_url"])
 
 
 # DB Function #

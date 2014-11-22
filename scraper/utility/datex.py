@@ -21,7 +21,8 @@ def convert_to_datetime(results):
 		try: 
 			concert_date = time.strptime(result, "%B %d %Y")
 		except ValueError:
-			print("Cannot convert '" + result + "' at item " + str(index) + ". This is the full list: " + results)
+			print("Cannot convert '" + result + "' at item " + str(index) + ". This is the full list: " + str(results))
+			break
 		else: 
 			if (today_datetime > concert_date):
 				concert_date = None

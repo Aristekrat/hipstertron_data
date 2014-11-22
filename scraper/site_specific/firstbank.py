@@ -1,47 +1,33 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
 
-# Selector Library #
-url_selector = ".final .number"
-
-artist_selector = ".info h3 a"
-
-date_selector = ".date"
-
-concert_details_selector = ".entry .buttons a"
-
+selectors = selector_library.firstbank
+urls = urls_library.urls["first_bank"]
 
 # URL Harvest #
-root_url = ["http://www.1stbankcenter.com/events"]
-
-root = sitex.get_pages(root_url)
-
-urls = showlinkx.scrape_concert_pages(root, root_url, url_selector)
-
 site_html = sitex.get_pages(urls)
 
-
 # Artist Section #
-artists_html = artistx.scrape_artists(site_html, artist_selector)
+artists_html = artistx.scrape_artists(site_html, selectors["artist"])
 
 artists_stripped = utilityx.strip_html(artists_html)
 
 
 # Dates Section #
-dates_html = datex.scrape_dates(site_html, date_selector)
+dates_html = datex.scrape_dates(site_html, selectors["date"])
 
-dates_stripped_html = utilityx.strip_html(dates_html)
+dates_stripped_html = site_specificx.special_strip_html(dates_html)
 
 dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
-dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 4, 8)
+dates_formatted = datex.format_months(dates_stripped_datechars)
 
-dates_datetime = datex.convert_to_datetime(dates_stripped_ends)
+dates_datetime = datex.convert_to_datetime(dates_formatted)
 
 
 # Show Links Section #
-concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
+concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["ticket_url"])
 
 
 # DB Function #
