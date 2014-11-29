@@ -72,3 +72,32 @@ def cull_dates(results):
 					culled.append(components[index] + " " + components[index + 1])
 				break
 	return culled
+
+# Applies to : Red Rocks
+# Special Red Rocks functions
+# If memory serves right, this is the explanation for these functions:
+# Red Rocks doesn't list the date for the concert in plain text on the calendar. I can however follow the link to the concert details page and get the plain text page there
+# This first function collects all the links
+def get_redrocks_dateurls(results):
+	dates = []
+	for result in results: 
+		for x in result:
+			dates.append(x.attrs['href'])
+	return dates
+
+# This next function scrapes all the secondary pages
+def scrape_redrocks_dates(pages): 
+	scraped = []
+	for page in pages:
+		scraped.append(page.find(class_ = "date_time"))
+	return scraped
+
+# The selector gets too many results, so this function boots out the evenly spaced junk
+def redrocks_strip_dates(results):
+	i = 1
+	stripped = []
+	for result in results:
+		if result and i % 2 == 0:
+			stripped.append(result)
+		i = i + 1
+	return stripped

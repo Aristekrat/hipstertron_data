@@ -4,9 +4,10 @@ from flask.ext.cors import CORS
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
-import time
-import calendar
+# import time
+# import calendar
 import os
+import sys
 
 app = Flask(__name__)
 CORS(app, resources='/*', headers='Content-Type')
@@ -42,8 +43,15 @@ def sendEmail():
 	email_data = request.get_json()
 	newEmail = models.Emails(email = email_data['email'], frequency = email_data['frequency'])
 	db.session.add(newEmail)
-	db.session.commit()
-	return "Complete"
+	try: 
+		db.session.commit()
+		return "Complete"
+	except:
+		db.session.rollback()
+		resp = make_response("Not Unique", 401)
+		return resp
+	finally: 
+		db.session.close()
    
 # Server Start
 if __name__ == '__main__':
