@@ -1,83 +1,36 @@
 import sys
-sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, selector_library, site_specificx, urls_library
 import re
- 
-# Paramount has a bunch of special code to format it's handwritten dates.
-# In retrospect, this was foolish. Paramount has a whole bunch of regularly formatted dates hidden by Javascript. 
-# Pulling it from the top banner was way more work than it was worth. 
-# Parmount needs to be REDONE.
+sys.path.append("..")
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
 
-urls = ["http://www.paramountdenver.com/"]
+selectors = selector_library.paramount
 
-artist_selector = ".photo-meta-data h2 a"
-
-date_selector = ".photo-meta-data p"
-
-concert_details_selector = ".photo-meta-data h2 a"
+urls = urls_library.urls["paramount"]
 
 site_html = sitex.get_pages(urls)
 
 
 #Artist Section#
-
-artists_html = artistx.scrape_artists(site_html, artist_selector)
+artists_html = artistx.scrape_artists(site_html, selectors["artist"])
 
 artists_stripped = utilityx.strip_html(artists_html)
 
 
 #Dates Section#
+dates_html = datex.scrape_dates(site_html, selectors["date"])
 
-dates_html = datex.scrape_dates(site_html, date_selector)
-
-print(dates_html)
-
-# The strip function is failing due to an internal html tag <br> so Beautiful Soup can't access string
-# I'll just need to write the date harvester and add it here.
-dates_stripped_html = utilityx.strip_html(dates_html)
-
-print(dates_stripped_html)
+dates_stripped_html = datex.cull_date_and_month(dates_html[0]) #Not quite sure why paramount is pulling down something different
 
 dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
-# This function removes any result that does not have 'day' in it, most of the non-conforming paramount results don't.
-def remove_junk(results):
-	stripped = []
-	for date in results:
-		x = re.search('day|Nov', date) #Note this condition is not foolproof. Sometimes Paramount doesn't even include the damn day.
-		if (x != None):
-			stripped.append(date)
-	return stripped
+dates_formatted = datex.add_year(dates_stripped_datechars)
 
-dates_special_mod1 = remove_junk(dates_stripped_datechars)
-
+dates_datetime = datex.convert_to_datetime(dates_formatted)
 
 
 #Show Links Section#
+concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["ticket_url"])
 
-concert_details_html = showlinkx.scrape_concert_links(site_html, concert_details_selector)
 
-# This function grabs reasonably consistent dates and boots out the remainder. FU paramount.
-def cull_dates(results):
-	stripped = []
-	for index, date in enumerate(results):
-		x = date.split()
-		x.pop(0)
-		t = x[0][:3]
-		if (t == "Sep" or t == "Oct" or t == "Nov" or t == "Dec" or t == "Jan" or t == "Feb" or t == "Mar" or t == "Apr"):
-			culled = " ".join(x[:2])
-			stripped.append(culled)
-		else: 
-			artists_stripped.pop(index)
-			concert_details_html.pop(index)
-	return stripped
-
-dates_special_mod2 = cull_dates(dates_special_mod1)
-
-dates_format1 = datex.format_months(dates_special_mod2)
-
-dates_format2 = datex.add_year(dates_format1)
-
-dates_datetime = datex.convert_to_datetime(dates_format2)
-
+# DB Function #
 utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 7)

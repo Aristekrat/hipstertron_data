@@ -26,13 +26,15 @@ dates_stripped_html = utilityx.strip_html(dates_html)
 
 dates_special_mod1 = site_specificx.get_proper_dates(dates_stripped_html, artists_special_mod1)
 
-dates_special_mod2 = site_specificx.cull_dates(dates_special_mod1)
+dates_special_mod2 = datex.cull_date_and_month(dates_special_mod1)
 
-dates_format1 = datex.format_months(dates_special_mod2)
+dates_format1 = utilityx.strip_unwanted_chars(dates_special_mod2)
 
-dates_format2 = datex.add_year(dates_format1)
+dates_format2 = datex.format_months(dates_special_mod2)
 
-dates_datetime = datex.convert_to_datetime(dates_format2)
+dates_format3 = datex.add_year(dates_format1)
+
+dates_datetime = datex.convert_to_datetime(dates_format3)
 
 
 # Show Links Section #

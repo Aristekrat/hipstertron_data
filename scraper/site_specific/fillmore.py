@@ -29,7 +29,7 @@ dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
 
 dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 0, 9)
 
-dates_special_mod1 = site_specificx.fillmore_modify_string(dates_stripped_ends)
+dates_special_mod1 = datex.move_date_behind_month(dates_stripped_ends)
 
 dates_datetime = datex.convert_to_datetime(dates_special_mod1)
 

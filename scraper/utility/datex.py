@@ -1,4 +1,5 @@
 import time
+import re
 from datetime import datetime
 
 #Scrapes dates from a Beautiful Soup object with a css selector
@@ -10,6 +11,46 @@ def scrape_dates(pages, selector):
 		date = page.select(selector)
 		scraped.append(date)
 	return scraped
+
+# Harvests the date from the string. By searching for the month and then adding the result that comes after it.
+# TODO - add a test that performs a findall for the date string and raises a warning if multiple months are found
+def cull_date_and_month(results):
+	culled = []
+	for date in results:
+		string_date = str(date)
+		components = string_date.split()
+		
+		for index, component in enumerate(components):
+			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', component)
+			if (x):
+				month_item = components[index]
+				date_item = components[index + 1]
+				standard_result = month_item + " " + date_item
+				# This if block block detects date ranges, eg 2-5. I used the length property because most proper, non-range dates will have only a length of 2
+				if (len(date_item) > 2):
+					t = re.search('\-', date_item)
+					if (not t):
+						culled.append(standard_result)
+						break
+					else: 
+						# Need a range handler function
+						culled.append(month_item + " " + date_item[0])
+						break
+				else: 
+					culled.append(standard_result)
+					break
+	
+	return culled
+
+# For dates that are formatted : 12 December 2014, this function will convert that date into December 12 2014
+def move_date_behind_month(results):
+	stripped = []
+	for result in results:
+		result = result.split(' ')
+		result.insert(-1, result[0])
+		del result[0]
+		stripped.append(" ".join(result))
+	return stripped
 
 # Very particular about Month, day, year format.
 def convert_to_datetime(results):

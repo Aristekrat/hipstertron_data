@@ -23,16 +23,6 @@ def scrape_concert_pages(root_page, root_url, selector):
 			scraped.append("http://www.fillmoreauditorium.org" + r.attrs['href'])
 	return scraped
 
-# I didn't write an explanatory comment when I wrote this function so I'm not altogether sure why this is necessary
-def fillmore_modify_string(results):
-	stripped = []
-	for result in results:
-		result = result.split(' ')
-		result.insert(-1, result[0])
-		del result[0]
-		stripped.append(" ".join(result))
-	return stripped
-
 # Applies to : Pepsi
 # This function gets rid of the "Blah blah world tour" nonsense. It can probably be refactored into an all purpose artist filter
 def pepsi_strip_artists(results):
@@ -54,24 +44,30 @@ def get_proper_dates(results, artists_list):
 			stripped.append(x.string)
 	return stripped
 
-# Harvests the date from the string.
-# A portion of this one should be combined with the date finder and the other portion should become the function that handles ranges
-def cull_dates(results):
-	culled = []
-	for date in results:
-		components = date.split()
-		for index, component in enumerate(components):
-			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', component)
-			if (x == None):
-				continue
-			elif (x != None):
-				# This monkey patch handles ranges that are formatted as single strings, eg 6-8. Obviously, this is the code version of duct tape.
-				if (len(components[index + 1]) > 2):
-					culled.append(components[index] + " " + components[index + 1][0])
-				else: 
-					culled.append(components[index] + " " + components[index + 1])
-				break
-	return culled
+# Harvests the date from the string. By searching for the month and then adding the result that comes after it.
+# # TODO - add a test that performs a findall for the date string and raises a warning if multiple months are found
+# def cull_date_and_month(results):
+# 	culled = []
+# 	for date in results:
+# 		string_date = str(date)
+# 		components = string_date.split()
+# 		for index, component in enumerate(components):
+# 			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', component)
+# 			if (x):
+# 				month_item = components[index]
+# 				date_item = components[index + 1]
+# 				standard_result = month_item + " " + date_item
+# 				# This if block block detects date ranges, eg 2-5. I used the length property because most proper, non-range dates will have only a length of 2
+# 				if (len(date_item) > 2):
+# 					t = re.search('-', component)
+# 					if (not t):
+# 						culled.append(standard_result)
+# 					else: 
+# 						# Need a range handler function
+# 						culled.append(month_item + " " + date_item[0])
+# 				else: 
+# 					culled.append(standard_result)
+# 	return culled
 
 # Applies to : Red Rocks
 # Special Red Rocks functions

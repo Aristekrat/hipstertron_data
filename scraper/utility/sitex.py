@@ -19,3 +19,11 @@ def get_pages(urls):
 		soupified = BeautifulSoup(page)
 		soup_page.append(soupified)
 	return soup_page
+
+# Scrapes pretty much any data type
+def selenium_scrape(selector, driver):
+	stripped = []
+	t = driver.find_elements_by_css_selector(selector)
+	for result in t:
+		stripped.append(result.get_attribute('innerHTML'))
+	return stripped

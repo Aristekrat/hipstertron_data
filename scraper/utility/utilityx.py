@@ -32,7 +32,6 @@ def strip_unwanted_chars(results):
 
 # Not sure how I would test this function, particularly in the abstract. Likely need a postgres mock
 def add_concert_to_database(artists, dates, showLinks, id):
-	# if (len(artists) == len(dates)):
 	for index, artist in enumerate(artists):
 		if (dates[index] == None):
 			continue
@@ -40,7 +39,11 @@ def add_concert_to_database(artists, dates, showLinks, id):
 			new_show = Denver_Concerts(showDate = dates[index], band = artists[index], showLink = showLinks[index], concertVenueId = id)
 			db.session.add(new_show)
 		db.session.commit()
-	# else:
-	# 	print("Error! Artist list and dates list are not the same length for venue: %s!" % id)
-	# 	print("Artists length is: %s" % (len(artists)))
-	# 	print("Dates length is: %s" % (len(dates)))
+
+# This function can be applied to a huge range of scraping targets, but is prone to errors because the relative position of the correct text may change in the string
+def lazy_scrape(results, correctIndex):
+	scraped = []
+	for result in results: 
+		x = result.split('"')
+		scraped.append(x[correctIndex])
+	return scraped 

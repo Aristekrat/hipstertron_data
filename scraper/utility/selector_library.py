@@ -16,4 +16,4 @@ red_rocks = {"artist": "li .concert", "date": "", "page_url": "", "ticket_url": 
 
 pepsi_center = {"artist": ".image-title a", "date": ".image-line2", "page_url": "", "ticket_url": ".caption .more_info a"}
 
-# paramount = {"artist": , "date": , "page_url": "ticket_url": }
+paramount = {"artist": ".photo-meta-data h2 a", "date": ".photo-meta-data p", "page_url": "", "ticket_url": ".photo-meta-data h2 a"}
