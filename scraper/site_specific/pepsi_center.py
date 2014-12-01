@@ -1,7 +1,7 @@
-import re
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx
+from libraries import selector_library, urls_library
 
 urls = urls_library.urls["pepsi_center"]
 
@@ -11,7 +11,7 @@ site_html = sitex.get_pages(urls)
 
 
 # Artist Section #
-artists_html = artistx.scrape_artists(site_html, selectors["artist"])
+artists_html = sitex.generic_scrape(site_html, selectors["artist"])
 
 artists_stripped = utilityx.strip_html(artists_html)
 
@@ -19,11 +19,11 @@ artists_special_mod1 = site_specificx.pepsi_strip_artists(artists_stripped)
 
 
 # Dates Section #
-# TODO - create a utility function that finds dates by regex and use it here
-dates_html = datex.scrape_dates(site_html, selectors["date"])
+dates_html = sitex.generic_scrape(site_html, selectors["date"])
 
 dates_stripped_html = utilityx.strip_html(dates_html)
 
+# TODO - create a utility function that finds dates by regex and use it here
 dates_special_mod1 = site_specificx.get_proper_dates(dates_stripped_html, artists_special_mod1)
 
 dates_special_mod2 = datex.cull_date_and_month(dates_special_mod1)
@@ -42,6 +42,7 @@ concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["tick
 
 # Taylor Swift's announced concert doesn't have a buy tickets link, which messes up the add to db function. 
 # This is a bandaid to deal with it. I generally assume this won't be a common problem. 
+# TODO - gotta fix this
 concert_details_html.append("/")
 
 # DB Function #

@@ -11,6 +11,8 @@ def strip_html(results):
 			stripped.append(x.string)
 	return stripped
 
+# TODO - keep this function but disfavor usage. It is likely to break in difficult ways when the site changes
+# TODO - when this function is used, test what chars it is removing
 def strip_string_ends(results, beginning, end):
 	stripped = []
 	for result in results: 
@@ -41,7 +43,7 @@ def add_concert_to_database(artists, dates, showLinks, id):
 		db.session.commit()
 
 # This function can be applied to a huge range of scraping targets, but is prone to errors because the relative position of the correct text may change in the string
-def lazy_scrape(results, correctIndex):
+def lazy_strip(results, correctIndex):
 	scraped = []
 	for result in results: 
 		x = result.split('"')

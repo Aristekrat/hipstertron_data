@@ -1,6 +1,7 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx 
+from libraries import selector_library, urls_library
 from selenium import webdriver
 from time import sleep
 
@@ -51,7 +52,7 @@ dates_datetime = datex.convert_to_datetime(dates_formatted_year)
 # Concert Links Section #
 concert_details_html = sitex.selenium_scrape('.buttons', chrome)
 
-concert_details_links = utilityx.lazy_scrape(concert_details_html, 1)
+concert_details_links = utilityx.lazy_strip(concert_details_html, 1)
 
 
 # DB Function #

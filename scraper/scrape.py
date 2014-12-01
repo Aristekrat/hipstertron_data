@@ -7,7 +7,7 @@ if os.environ['DEV_ENV'] == 'production':
 elif os.environ['DEV_ENV'] == 'local':
 	prefix = 'scraper/site_specific/'
 
-exec(compile(open(prefix + 'gothic_alt.py', "rb").read(), 'gothic_alt.py', 'exec'))
+exec(compile(open(prefix + 'gothic.py', "rb").read(), 'gothic.py', 'exec'))
 exec(compile(open(prefix + 'fillmore.py', "rb").read(), 'fillmore.py', 'exec'))
 exec(compile(open(prefix + 'firstbank.py', "rb").read(), 'firstbank.py', 'exec'))
 exec(compile(open(prefix + 'bluebird.py', "rb").read(), 'bluebird.py', 'exec'))

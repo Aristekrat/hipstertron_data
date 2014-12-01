@@ -1,6 +1,7 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx
+from libraries import selector_library, urls_library
 
 selectors = selector_library.red_rocks
 
@@ -9,15 +10,15 @@ urls = urls_library.urls["red_rocks"]
 site_html = sitex.get_pages(urls)
 
 
-#Artist Section#
-artists_html = artistx.scrape_artists(site_html, selectors["artist"])
+# Artist Section #
+artists_html = sitex.generic_scrape(site_html, selectors["artist"])
 
 artists_stripped = utilityx.strip_html(artists_html)
 
 artists_special_mod1 = utilityx.strip_string_ends(artists_stripped, 0, 10)
 
 
-#Dates Section#
+# Dates Section #
 redrocks_date_urls = site_specificx.get_redrocks_dateurls(artists_html)
 
 redrocks_date_pages = sitex.get_pages(redrocks_date_urls)
@@ -33,7 +34,9 @@ dates_special_mod1 = site_specificx.redrocks_strip_dates(dates_stripped_datechar
 dates_datetime = datex.convert_to_datetime(dates_special_mod1)
 
 
-#Show Links Section#
+# Show Links Section #
 concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["ticket_url"])
 
+
+# DB Function #
 utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, concert_details_html, 9)

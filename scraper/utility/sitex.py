@@ -10,7 +10,7 @@ header = {
 	"Referer": "https://www.google.com/"
 }
 
-# Get Urls and convert to soup object
+# Get Urls and convert to soup object. Works on many or one url
 def get_pages(urls):
 	soup_page = []
 	for url in urls:
@@ -20,7 +20,14 @@ def get_pages(urls):
 		soup_page.append(soupified)
 	return soup_page
 
-# Scrapes pretty much any data type
+# The standard function for both artist and date scraping
+def generic_scrape(pages, selector):
+	scraped = []
+	for page in pages:
+		scraped.append(page.select(selector))
+	return scraped
+
+# Scrapes pretty much any data type via selenium
 def selenium_scrape(selector, driver):
 	stripped = []
 	t = driver.find_elements_by_css_selector(selector)

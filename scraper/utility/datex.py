@@ -5,12 +5,12 @@ from datetime import datetime
 #Scrapes dates from a Beautiful Soup object with a css selector
 #TODO - AT Test if not empty
 #TODO - AT Test that none of the values are empty strings or None
-def scrape_dates(pages, selector):
-	scraped = []
-	for page in pages:
-		date = page.select(selector)
-		scraped.append(date)
-	return scraped
+# def scrape_dates(pages, selector):
+# 	scraped = []
+# 	for page in pages:
+# 		date = page.select(selector)
+# 		scraped.append(date)
+# 	return scraped
 
 # Harvests the date from the string. By searching for the month and then adding the result that comes after it.
 # TODO - add a test that performs a findall for the date string and raises a warning if multiple months are found
@@ -75,6 +75,8 @@ def convert_to_datetime(results):
 # Expands shortened month names
 # TODO - Applied test this one by checking if component[0] equals one of the listed months.
 # Note - May want to refactor the way this function handles an input error (in the else clause)
+# TODO - refactor this one so it doesn't rely on the month being in position zero? Currently prone to breaking. Not releveant if always receives prepared input beforehand.
+# TODO - use a month dictionary to shorten this function. You don't need this massive pile of if statements
 def format_months(results):
 	formatted = []
 	for date in results:
@@ -105,6 +107,7 @@ def format_months(results):
 
 # Adds the correct year, this function requires the month be in the proper format first
 # Q - what should this function do in case it receives invalid input? 
+# Change this function to dynamically detect the year
 def add_year(results):
 	formatted = []
 	for date in results: 

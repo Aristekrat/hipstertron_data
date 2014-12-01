@@ -1,21 +1,23 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx, selector_library, urls_library
+from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx 
+from libraries import selector_library, urls_library
 
 selectors = selector_library.firstbank
+
 urls = urls_library.urls["first_bank"]
 
-# URL Harvest #
 site_html = sitex.get_pages(urls)
 
+
 # Artist Section #
-artists_html = artistx.scrape_artists(site_html, selectors["artist"])
+artists_html = sitex.generic_scrape(site_html, selectors["artist"])
 
 artists_stripped = utilityx.strip_html(artists_html)
 
 
 # Dates Section #
-dates_html = datex.scrape_dates(site_html, selectors["date"])
+dates_html = sitex.generic_scrape(site_html, selectors["date"])
 
 dates_stripped_html = site_specificx.special_strip_html(dates_html)
 
