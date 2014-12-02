@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx
+from utility import sitex, datex, utilityx
 
 #Note, currently aren't any shows listed so fiddler's should properly be returning 0 results. 
 

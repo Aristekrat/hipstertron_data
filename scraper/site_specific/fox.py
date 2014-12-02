@@ -2,7 +2,7 @@ import sys
 import re
 import calendar
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx
+from utility import sitex, datex, utilityx, showlinkx
 
 #Fox Theater is a special little snowflake and works almost entirely differently from the other venues. Inspect the raw html to discover why.
 

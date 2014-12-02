@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, site_specificx
+from utility import sitex, datex, utilityx, showlinkx, site_specificx
 from libraries import selector_library, urls_library
 
 selectors = selector_library.red_rocks
