@@ -24,17 +24,15 @@ dates_html = sitex.generic_scrape(site_html, selectors["date"])
 dates_stripped_html = utilityx.strip_html(dates_html)
 
 # TODO - create a utility function that finds dates by regex and use it here
-dates_special_mod1 = site_specificx.get_proper_dates(dates_stripped_html, artists_special_mod1)
+dates_special_mod1 = utilityx.remove_listings_without_dates(dates_stripped_html, artists_special_mod1)
 
-dates_special_mod2 = datex.cull_date_and_month(dates_special_mod1)
+dates_culled = datex.cull_date_and_month(dates_special_mod1)
 
-dates_format1 = utilityx.strip_unwanted_chars(dates_special_mod2)
+dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_culled)
 
-dates_format2 = datex.format_months(dates_special_mod2)
+dates_formatted = datex.add_year(dates_format1)
 
-dates_format3 = datex.add_year(dates_format1)
-
-dates_datetime = datex.convert_to_datetime(dates_format3)
+dates_datetime = datex.convert_to_datetime(dates_formatted)
 
 
 # Show Links Section #

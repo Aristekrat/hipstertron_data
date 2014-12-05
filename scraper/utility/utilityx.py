@@ -42,7 +42,7 @@ def correct_capitalization(results):
 	return corrected 
 
 
-# Not sure how I would test this function, particularly in the abstract. Likely need a postgres mock
+# NOTE Not sure how I would test this function, particularly in the abstract. Likely need a postgres mock
 def add_concert_to_database(artists, dates, showLinks, id):
 	for index, artist in enumerate(artists):
 		if (dates[index] == None):
@@ -59,3 +59,15 @@ def lazy_strip(results, correctIndex):
 		x = result.split('"')
 		scraped.append(x[correctIndex])
 	return scraped 
+
+# This function should be used in the dates section
+def remove_listings_without_dates(dates_list, artists_list):
+	stripped = []
+	for index, date in enumerate(dates_list): 
+		x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', date)
+		if (x == None):
+			artists_list.pop(index)
+			continue
+		else:
+			stripped.append(x.string)
+	return stripped

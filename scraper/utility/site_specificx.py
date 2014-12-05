@@ -2,15 +2,15 @@ import re
 
 # Applies to : Gothic, Ogden, Bluebird
 # The site maintainers added an internal span which messed with BeautifulSoup's ability to access obj.string, which necessitated this site specific function
-def special_strip_html(results):
-	stripped = []
-	for result in results:
-		for x in result:
-			z = str(x)
-			t = z.split()
-			stripped_date = " ".join(t[6:9])
-			stripped.append(stripped_date)
-	return stripped
+# def special_strip_html(results):
+# 	stripped = []
+# 	for result in results:
+# 		for x in result:
+# 			z = str(x)
+# 			t = z.split()
+# 			stripped_date = " ".join(t[6:9])
+# 			stripped.append(stripped_date)
+# 	return stripped
 
 # Applies to : Fillmore
 # The fillmore has relative links and it currently doesn't have a unique css selector for pages
@@ -33,16 +33,16 @@ def pepsi_strip_artists(results):
 	return stripped
 
 # I might be able to use this one as a template for my regex date searcher 
-def get_proper_dates(results, artists_list):
-	stripped = []
-	for index, date in enumerate(results): 
-		x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', date)
-		if (x == None):
-			artists_list.pop(index)
-			continue
-		else:
-			stripped.append(x.string)
-	return stripped
+# def remove_listings_without_dates(dates_list, artists_list):
+# 	stripped = []
+# 	for index, date in enumerate(dates_list): 
+# 		x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', date)
+# 		if (x == None):
+# 			artists_list.pop(index)
+# 			continue
+# 		else:
+# 			stripped.append(x.string)
+# 	return stripped
 
 # Harvests the date from the string. By searching for the month and then adding the result that comes after it.
 # # TODO - add a test that performs a findall for the date string and raises a warning if multiple months are found
