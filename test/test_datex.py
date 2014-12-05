@@ -15,6 +15,7 @@ class DatexTestCase(unittest.TestCase):
 	def test_format_months_against_valid_input(self):
 		self.assertEqual(datex.format_months(["Oct 15"]), ["October 15"])
 
+	# This one is currently failing
 	def test_format_months_against_invalid_input(self):
 		self.assertEqual(datex.format_months(["BOOMERANG!", "Oct 15"]), [])
 

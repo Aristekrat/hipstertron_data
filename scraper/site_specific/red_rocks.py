@@ -40,3 +40,5 @@ concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["tick
 
 # DB Function #
 utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, concert_details_html, 9)
+
+print("End of Red Rocks script reached, exiting.")

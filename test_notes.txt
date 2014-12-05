@@ -1,2 +1,0 @@
-Ideas: 
-1) I could really use a testing function that tests the variables at every step of the way and tells me the one that is failing.

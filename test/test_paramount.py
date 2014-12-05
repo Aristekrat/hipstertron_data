@@ -2,7 +2,7 @@ import unittest
 import sys
 sys.path.append("../scraper")
 sys.path.append("..")
-from utility import sitex, artistx, datex, utilityx, showlinkx, selector_library, urls_library, site_specificx
+from utility import sitex, datex, utilityx, showlinkx, selector_library, urls_library, site_specificx
 from test_helpers import utilityh
 
 selectors = selector_library.paramount

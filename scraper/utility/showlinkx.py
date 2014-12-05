@@ -1,4 +1,5 @@
 #Pretty similar to the artist scraping function, it just involves an additional for loop.
+#Can this be converted into a generic link scraping function? Maybe combined with the function below as well
 def scrape_concert_links(pages, selector):
 	scraped = []
 	for page in pages:

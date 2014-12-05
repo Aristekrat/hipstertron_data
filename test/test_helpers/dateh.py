@@ -1,0 +1,2 @@
+# All dates should have a defined format by the time they're ready to be converted:
+# Month, day, year. Create a function that splits the string and tests each component to see if matches what it is supposed to

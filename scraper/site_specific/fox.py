@@ -32,6 +32,8 @@ def format_artists(results):
 
 artists_stripped = format_artists(artists_raw)
 
+artists_formatted = utilityx.correct_capitalization(artists_stripped)
+
 #Dates
 
 find_dates_pattern = '"SortTime":"(.*?)"'
@@ -78,4 +80,6 @@ def format_links(results):
 
 concert_details_html = format_links(show_links_raw)
 
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 10)
+utilityx.add_concert_to_database(artists_formatted, dates_datetime, concert_details_html, 10)
+
+print("End of Fox Theater script reached, exiting.")

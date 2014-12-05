@@ -47,3 +47,5 @@ concert_details_html.append("/")
 
 # DB Function #
 utilityx.add_concert_to_database(artists_special_mod1, dates_datetime, concert_details_html, 8)
+
+print("End of Pepsi Center script reached, exiting.")

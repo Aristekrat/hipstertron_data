@@ -11,7 +11,7 @@ def strip_html(results):
 			stripped.append(x.string)
 	return stripped
 
-# TODO - keep this function but disfavor usage. It is likely to break in difficult ways when the site changes
+# Try not to use this function if another will work. If the input changes it may break the code in confusing ways.
 # TODO - when this function is used, test what chars it is removing
 def strip_string_ends(results, beginning, end):
 	stripped = []
@@ -31,6 +31,16 @@ def strip_unwanted_chars(results):
 	for result in results:
 		stripped.append(result.translate(remap))
 	return stripped
+
+# This will change any weird capitalization to Title Case
+def correct_capitalization(results):
+	corrected = []
+	for result in results:
+		reset_string = result.lower()
+		capitalized_first_letter = reset_string.title()
+		corrected.append(capitalized_first_letter)
+	return corrected 
+
 
 # Not sure how I would test this function, particularly in the abstract. Likely need a postgres mock
 def add_concert_to_database(artists, dates, showLinks, id):

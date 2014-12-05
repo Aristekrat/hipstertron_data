@@ -5,9 +5,9 @@ from libraries import selector_library, urls_library
 from selenium import webdriver
 from time import sleep
 
-selectors = selector_library.gothic
+selectors = selector_library.ogden
 
-urls = urls_library.urls["gothic"]
+urls = urls_library.urls["ogden"]
 
 site_html = sitex.get_pages(urls)
 
@@ -56,8 +56,8 @@ concert_details_links = utilityx.lazy_strip(concert_details_html, 1)
 
 
 # DB Function #
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_links, 1)
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_links, 3)
 
-print("End of Gothic Theater script reached, exiting.")
+print("End of Ogden script reached, exiting.")
 
 chrome.close()

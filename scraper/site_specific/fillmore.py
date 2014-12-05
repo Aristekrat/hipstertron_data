@@ -26,9 +26,8 @@ dates_html = sitex.generic_scrape(site_html, selectors["date"])
 
 dates_stripped_html = utilityx.strip_html(dates_html)
 
-dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
-
-dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_datechars, 0, 9)
+#TODO - create a function that can strip times based on regex
+dates_stripped_ends = utilityx.strip_string_ends(dates_stripped_html, 0, 9)
 
 dates_special_mod1 = datex.move_date_behind_month(dates_stripped_ends)
 
@@ -41,3 +40,5 @@ concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["tick
 
 # DB Function #
 utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 4)
+
+print("End of Fillmore script reached, exiting.")

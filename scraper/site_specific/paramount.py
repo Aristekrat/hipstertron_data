@@ -34,3 +34,5 @@ concert_details_html = showlinkx.scrape_concert_links(site_html, selectors["tick
 
 # DB Function #
 utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_html, 7)
+
+print("End of Paramount script reached, exiting.")

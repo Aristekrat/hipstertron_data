@@ -5,9 +5,9 @@ from libraries import selector_library, urls_library
 from selenium import webdriver
 from time import sleep
 
-selectors = selector_library.gothic
+selectors = selector_library.bluebird
 
-urls = urls_library.urls["gothic"]
+urls = urls_library.urls["bluebird"]
 
 site_html = sitex.get_pages(urls)
 
@@ -56,8 +56,8 @@ concert_details_links = utilityx.lazy_strip(concert_details_html, 1)
 
 
 # DB Function #
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_links, 1)
+utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_links, 2)
 
-print("End of Gothic Theater script reached, exiting.")
+print("End of Bluebird script reached, exiting.")
 
 chrome.close()
