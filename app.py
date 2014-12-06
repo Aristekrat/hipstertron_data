@@ -11,7 +11,7 @@ import sys
 
 app = Flask(__name__)
 CORS(app, resources='/*', headers='Content-Type')
-app.config.from_object('config')
+#app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
