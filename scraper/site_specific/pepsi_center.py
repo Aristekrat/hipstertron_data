@@ -30,7 +30,7 @@ dates_culled = datex.cull_date_and_month(dates_special_mod1)
 
 dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_culled)
 
-dates_formatted = datex.add_year(dates_format1)
+dates_formatted = datex.add_year(dates_stripped_datechars)
 
 dates_datetime = datex.convert_to_datetime(dates_formatted)
 
