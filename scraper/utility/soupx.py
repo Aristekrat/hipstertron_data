@@ -27,10 +27,11 @@ def generic_scrape(pages, selector):
 		scraped.append(page.select(selector))
 	return scraped
 
-# Scrapes pretty much any data type via selenium
-def selenium_scrape(selector, driver):
-	stripped = []
-	t = driver.find_elements_by_css_selector(selector)
-	for result in t:
-		stripped.append(result.get_attribute('innerHTML'))
-	return stripped
+# This function is almost a mirror image of generic scrape, yet using generic scrape in its place will cause Red Rocks to find a list of None results.
+# page.find and page.select must work differently. It bears investigating
+def scrape_by_class(pages, selector): 
+	scraped = []
+	for page in pages:
+		scraped.append(page.find(class_ = selector))
+	return scraped
+

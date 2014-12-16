@@ -5,4 +5,4 @@
 dev/**
 __pycache__/**
 
-refactor_list.txt
+ghostdriver.log

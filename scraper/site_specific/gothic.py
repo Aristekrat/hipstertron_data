@@ -1,63 +1,58 @@
 import sys
 sys.path.append("..")
-from utility import sitex, datex, utilityx, showlinkx, site_specificx 
+from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex
 from libraries import selector_library, urls_library
-from selenium import webdriver
-from time import sleep
+
+mode = tracex.determine_file_mode()
 
 selectors = selector_library.gothic
 
 urls = urls_library.urls["gothic"]
 
-site_html = sitex.get_pages(urls)
+driver = seleniumx.initialize_driver()
 
-chrome = webdriver.PhantomJS()
+seleniumx.initialize_selenium(urls, driver)
 
-chrome.get(urls[0])
-
-button = chrome.find_element_by_css_selector("#loadMoreEvents")
-
-actions = webdriver.common.action_chains.ActionChains(chrome)
-
-actions.move_to_element(button)
-actions.click(button)
-actions.perform()
-
-sleep(2)
-
-actions.click(button)
-actions.perform()
+tracex.initialize_trace_file(mode, "gothic")
 
 
 # Artist Section #
-artists_stripped_html = sitex.selenium_scrape(selectors['artist'], chrome)
+artists_raw = seleniumx.selenium_scrape(selectors['artist'], driver)
 
-artists_stripped = utilityx.strip_unwanted_chars(artists_stripped_html)
+artists_stripped_chars = utilityx.strip_unwanted_chars(artists_raw)
+tracex.create_trace(mode, "gothic", "artists_stripped_chars", artists_stripped_chars)
 
 
 # Dates Section #
-dates_html = sitex.selenium_scrape(selectors['date'], chrome)
+dates_raw = seleniumx.selenium_scrape(selectors['date'], driver)
 
-dates_stripped_html = datex.cull_date_and_month(dates_html)
+dates_culled = datex.cull_date_and_month(dates_raw)
+tracex.create_trace(mode, "gothic", "dates_culled", dates_culled)
 
-dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)
+dates_stripped_chars = utilityx.strip_unwanted_chars(dates_culled)
+tracex.create_trace(mode, "gothic", "dates_stripped_chars", dates_stripped_chars)
 
-dates_formatted_month = datex.format_months(dates_stripped_datechars)
+dates_format_month = datex.format_months(dates_stripped_chars)
+tracex.create_trace(mode, "gothic", "dates_format_month", dates_format_month)
 
-dates_formatted_year = datex.add_year(dates_formatted_month)
+dates_format_year = datex.add_year(dates_format_month)
+tracex.create_trace(mode, "gothic", "dates_format_year", dates_format_year)
 
-dates_datetime = datex.convert_to_datetime(dates_formatted_year)
+dates_datetime = datex.convert_to_datetime(dates_format_year)
+tracex.create_trace(mode, "gothic", "dates_datetime", dates_datetime)
 
 
-# Concert Links Section #
-concert_details_html = sitex.selenium_scrape('.buttons', chrome)
+# Ticket Links Section #
+ticket_links_raw = seleniumx.selenium_scrape(selectors["ticket_url"], driver)
+tracex.create_trace(mode, "gothic", "ticket_links_raw", ticket_links_raw)
 
-concert_details_links = utilityx.lazy_strip(concert_details_html, 1)
+ticket_links = utilityx.lazy_strip(ticket_links_raw, 1)
+tracex.create_trace(mode, "gothic", "ticket_links", ticket_links)
 
 
 # DB Function #
-utilityx.add_concert_to_database(artists_stripped, dates_datetime, concert_details_links, 1)
+utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, 1)
 
 print("End of Gothic Theater script reached, exiting.")
 
-chrome.close()
+seleniumx.end_driver(driver)

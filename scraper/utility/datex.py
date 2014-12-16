@@ -2,16 +2,6 @@ import time
 import re
 from datetime import datetime
 
-#Scrapes dates from a Beautiful Soup object with a css selector
-#TODO - AT Test if not empty
-#TODO - AT Test that none of the values are empty strings or None
-# def scrape_dates(pages, selector):
-# 	scraped = []
-# 	for page in pages:
-# 		date = page.select(selector)
-# 		scraped.append(date)
-# 	return scraped
-
 # Harvests the date from the string. By searching for the month and then adding the result that comes after it.
 # TODO - add a test that performs a findall for the date string and raises a warning if multiple months are found
 def cull_date_and_month(results):
@@ -72,11 +62,9 @@ def convert_to_datetime(results):
 			converted.append(concert_date)
 	return converted
 
-# Expands shortened month names
+# Expands shortened month names, a bit of a dangerous function, it relies on the month being in first position and will break without that
 # TODO - Applied test this one by checking if component[0] equals one of the listed months.
-# Note - May want to refactor the way this function handles an input error (in the else clause)
-# TODO - refactor this one so it doesn't rely on the month being in position zero? Currently prone to breaking. Not releveant if always receives prepared input beforehand.
-# TODO - use a month dictionary to shorten this function. You don't need this massive pile of if statements
+# Did not use a month dictionary so I could handle mixed results, eg, "Nov", "November", "Dec", "January"
 def format_months(results):
 	formatted = []
 	for date in results:

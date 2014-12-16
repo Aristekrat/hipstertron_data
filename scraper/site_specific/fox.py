@@ -1,85 +1,62 @@
 import sys
-import re
-import calendar
 sys.path.append("..")
-from utility import sitex, datex, utilityx, showlinkx
+from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex
+from libraries import selector_library, urls_library
+from selenium import webdriver
 
-#Fox Theater is a special little snowflake and works almost entirely differently from the other venues. Inspect the raw html to discover why.
+mode = tracex.determine_file_mode()
 
-urls = ["http://www.foxtheatre.com/"]
+selectors = selector_library.fox
 
-site_html = sitex.get_pages(urls)
+urls = urls_library.urls["fox"]
 
-site_html_stringed = str(site_html)
-find_var_pattern = "\[(.*?)\]"
-all_brackets = re.findall(find_var_pattern, site_html_stringed)
+driver = seleniumx.initialize_driver()
 
-data_var = all_brackets.pop()
+seleniumx.simple_initialize(urls, driver)
 
-#Artists
+tracex.initialize_trace_file(mode, "fox")
 
-find_bands_pattern = '"Billing":"(.*?)"'
-artists_raw = re.findall(find_bands_pattern, data_var)
+# Artist Section #
+artists_raw = seleniumx.selenium_scrape(selectors['artist'], driver)
 
-def format_artists(results):
-	formatted = []
-	for result in results:
-		#This method of replacing the unicode character's is weird and inefficient, but nothing else worked for me. 
-		x = result.replace('\\u0026', '&')
-		x = x.replace("\\u0027", "'")
-		formatted.append(x)
-	return formatted
+artists_stripped_chars = utilityx.strip_unwanted_chars(artists_raw)
+# Note - the list still represents &s as &amp, but apparently that's harmless, it'll be converted when redisplayed
+tracex.create_trace(mode, "fox", "artists_stripped_chars", artists_stripped_chars)
 
-artists_stripped = format_artists(artists_raw)
+# Dates Section #
+dates_month = seleniumx.selenium_scrape(selectors['month'], driver)
+tracex.create_trace(mode, "fox", "dates_month", dates_month)
 
-artists_formatted = utilityx.correct_capitalization(artists_stripped)
+dates_day = seleniumx.selenium_scrape(selectors['day'], driver)
+tracex.create_trace(mode, "fox", "dates_day", dates_day)
 
-#Dates
+dates_combined = site_specificx.combine(dates_month, dates_day)
+tracex.create_trace(mode, "fox", "dates_combined", dates_combined)
 
-find_dates_pattern = '"SortTime":"(.*?)"'
-dates_raw = re.findall(find_dates_pattern, data_var)
+dates_format_month = datex.format_months(dates_combined)
+tracex.create_trace(mode, "fox", "dates_format_month", dates_format_month)
 
-def remove_times(results):
-	stripped = []
-	for result in results:
-		t = result.split(" ")
-		stripped.append(t[0])
-	return stripped
+dates_format_year = datex.add_year(dates_format_month)
+tracex.create_trace(mode, "fox", "dates_format_year", dates_format_year)
 
-dates_filtered = remove_times(dates_raw)
+dates_datetime = datex.convert_to_datetime(dates_format_year)
+tracex.create_trace(mode, "fox", "dates_datetime", dates_datetime)
 
-def format_dates(results):
-	formatted = []
-	for result in results: 
-		new_date = [None] * 3
-		old_date = result.split("/")
-		new_date[2] = old_date[0] #Year
-		new_date[1] = old_date[2] #Day
-		t = int(old_date[1])
-		new_date[0] = calendar.month_name[t]
-		full_date = " ".join(new_date)
-		formatted.append(full_date)
 
-	return formatted
+# Ticket Links Section #
+ticket_links_raw = seleniumx.selenium_scrape(selectors["ticket_url"], driver)
+tracex.create_trace(mode, "fox", "ticket_links_raw", ticket_links_raw)
 
-dates_formatted = format_dates(dates_filtered)
+ticket_links_relative = utilityx.lazy_strip(ticket_links_raw, 5)
+tracex.create_trace(mode, "fox", "ticket_links_relative", ticket_links_relative)
 
-dates_datetime = datex.convert_to_datetime(dates_formatted)
+ticket_links = ticket_linksx.ticket_link_prefix("http://foxtheatre.com", ticket_links_relative)
+tracex.create_trace(mode, "fox", "ticket_links", ticket_links)
 
-#Show Links
-find_links_pattern = '"TicketUrl":"(.*?)"'
-show_links_raw = re.findall(find_links_pattern, data_var)
 
-def format_links(results):
-	formatted = []
-	for result in results:
-		#This method of replacing the unicode character's is weird and inefficient, but nothing else worked for me. 
-		x = result.replace('\\u0026', '&')
-		formatted.append(x)
-	return formatted
-
-concert_details_html = format_links(show_links_raw)
-
-utilityx.add_concert_to_database(artists_formatted, dates_datetime, concert_details_html, 10)
+# DB Function #
+utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, 10)
 
 print("End of Fox Theater script reached, exiting.")
+
+seleniumx.end_driver(driver)

@@ -1,51 +1,43 @@
 import unittest
 import sys
+from selenium import webdriver
 sys.path.append("../scraper")
 sys.path.append("..")
-from utility import sitex, datex, utilityx, showlinkx, site_specificx 
-from libraries import urls_library, selector_library
-from test_helpers import utilityh
+from utility import seleniumx, datex, utilityx, ticket_linksx
+from libraries import selector_library
+from test_helpers import utilityh, dateh
+from stack_trace import gothic_trace
 
-#Testing idea : check the length of artist and date at every step in its transformation
-#It'd be very good to load the raw html input into a file and pull it from there. I could set up seperate tests for those functions. Pulling it from the site each time is slow.
+selectors = selector_library.bluebird
 
-selectors = selector_library.gothic
+driver = webdriver.PhantomJS()
 
-urls = urls_library.urls["gothic"]
+driver.get("source/gothic.html")
+
+# Putting these two in setup slows down the test too much.
+artists_raw = seleniumx.selenium_scrape(selectors['artist'], driver)
+dates_raw = seleniumx.selenium_scrape(selectors['date'], driver)
 
 class GothicTestCase(unittest.TestCase):
+	# Length Comparison Tests
+	def test_raw_html_list_length(self):
+		self.assertEqual(len(artists_raw), len(dates_raw), len(gothic_trace.ticket_links_raw))
 
-	def setUp(self):
-		self.site_html = sitex.get_pages(urls)
-		self.artists_html = sitex.generic_scrape(self.site_html, selectors['artist'])
-		self.dates_html = sitex.generic_scrape(self.site_html, selectors['date'])
-		self.artists_stripped_html = utilityx.strip_html(self.artists_html)
+	def test_second_transformation_length(self):
+		self.assertEqual(len(gothic_trace.artists_stripped_chars), len(gothic_trace.dates_culled))
 
-	# Artist Section
-	def test_artists_raw_html(self):
-		utilityh.test_not_empty(self, self.artists_html)
+	def test_dates_stripped_chars_length(self):
+		self.assertEqual(len(gothic_trace.artists_stripped_chars), len(gothic_trace.dates_stripped_chars))
 
-	def test_artists_stripped_html(self):
-		utilityh.test_not_empty(self, self.artists_stripped_html)
+	def test_dates_format_month_length(self):
+		self.assertEqual(len(gothic_trace.artists_stripped_chars), len(gothic_trace.dates_format_year))
 
-	def test_artists_stripped_chars(self):
-		self.artists_stripped_chars = utilityx.strip_unwanted_chars(self.artists_stripped_html)
-		utilityh.test_not_empty(self, self.artists_stripped_chars)
+	def test_dates_format_year_length(self):
+		self.assertEqual(len(gothic_trace.artists_stripped_chars), len(gothic_trace.dates_format_year))
 
-	# # Dates Section
-	# def test_dates_raw_html(self):
-	# 	utilityh.test_not_empty(self, self.dates_html)
-
-	# def test_dates_stripped_html(self):
-	# 	self.dates_stripped_html = site_specificx.special_strip_html(self.dates_html)
-	# 	utilityh.test_not_empty(self, self.dates_stripped_html)
-
-	# def test_dates_stripped_datechars(self):
-	# 	self.dates_stripped_html = site_specificx.special_strip_html(self.dates_html)
-	# 	self.dates_stripped_datechars = utilityx.strip_unwanted_chars(self.dates_stripped_html)
-	# 	utilityh.test_not_empty(self, self.dates_stripped_datechars)
-
-
+	def test_final_list_length(self):
+		self.assertEqual(len(gothic_trace.artists_stripped_chars), len(gothic_trace.dates_datetime), len(gothic_trace.ticket_links))
 
 if __name__ == '__main__':
-    unittest.main()
+	unittest.main()
+	driver.close()
