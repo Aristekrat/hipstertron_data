@@ -42,15 +42,19 @@ def returnConcerts(result_count, offset_number):
 def sendEmail():
 	email_data = request.get_json()
 	newEmail = models.Emails(email = email_data['email'], frequency = email_data['frequency'])
+	print(newEmail)
 	db.session.add(newEmail)
+	# db.session.commit()
+	# db.session.close()
+	# return "Complete"
 	try: 
 		db.session.commit()
-		return "Complete"
+		resp = "Complete"
 	except:
 		db.session.rollback()
 		resp = make_response("Not Unique", 401)
-		return resp
-	finally: 
+	finally:
+		return resp 
 		db.session.close()
    
 # Server Start
