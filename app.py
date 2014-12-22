@@ -42,11 +42,7 @@ def returnConcerts(result_count, offset_number):
 def sendEmail():
 	email_data = request.get_json()
 	newEmail = models.Emails(email = email_data['email'], frequency = email_data['frequency'])
-	print(newEmail)
 	db.session.add(newEmail)
-	# db.session.commit()
-	# db.session.close()
-	# return "Complete"
 	try: 
 		db.session.commit()
 		resp = "Complete"
