@@ -17,7 +17,7 @@ tracex.initialize_trace_file(mode, "pepsi_center")
 # Artist Section #
 artists_raw = soupx.generic_scrape(site_html, selectors["artist"])
 
-artists_stripped_html = utilityx.strip_html(artists_raw)
+artists_stripped_html = soupx.strip_html(artists_raw)
 tracex.create_trace(mode, "pepsi_center", "artists_stripped_html", artists_stripped_html)
 
 artists_format_special = site_specificx.pepsi_strip_artists(artists_stripped_html)
@@ -27,7 +27,7 @@ tracex.create_trace(mode, "pepsi_center", "artists_format_special", artists_form
 # Dates Section #
 dates_raw = soupx.generic_scrape(site_html, selectors["date"])
 
-dates_stripped_html = utilityx.strip_html(dates_raw)
+dates_stripped_html = soupx.strip_html(dates_raw)
 tracex.create_trace(mode, "pepsi_center", "dates_stripped_html", dates_stripped_html)
 
 # TODO - create a utility function that finds dates by regex and use it here

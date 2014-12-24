@@ -17,13 +17,17 @@ tracex.initialize_trace_file(mode, "paramount")
 #Artist Section#
 artists_raw = soupx.generic_scrape(site_html, selectors["artist"])
 
-artists_stripped_html = utilityx.strip_html(artists_raw)
+artists_stripped_html = soupx.strip_html(artists_raw)
 tracex.create_trace(mode, "paramount", "artists_stripped_html", artists_stripped_html)
+
 
 #Dates Section#
 dates_raw = soupx.generic_scrape(site_html, selectors["date"])
 
-dates_culled = datex.cull_date_and_month(dates_raw[0]) #Not quite sure why paramount is pulling down something different
+dates_stripped_html = soupx.strip_html(dates_raw[0])
+tracex.create_trace(mode, "paramount", "dates_stripped_html", dates_stripped_html)
+
+dates_culled = datex.cull_date_and_month(dates_stripped_html) #Not quite sure why paramount is pulling down something different
 tracex.create_trace(mode, "paramount", "dates_culled", dates_culled)
 
 dates_stripped_chars = utilityx.strip_unwanted_chars(dates_culled)

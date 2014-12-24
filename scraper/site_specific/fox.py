@@ -12,7 +12,7 @@ urls = urls_library.urls["fox"]
 
 driver = seleniumx.initialize_driver()
 
-seleniumx.simple_initialize(urls, driver)
+seleniumx.initialize_selenium(urls, driver)
 
 tracex.initialize_trace_file(mode, "fox")
 

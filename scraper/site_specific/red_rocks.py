@@ -17,7 +17,7 @@ tracex.initialize_trace_file(mode, "red_rocks")
 # Artist Section #
 artists_raw = soupx.generic_scrape(site_html, selectors["artist"])
 
-artists_stripped_html = utilityx.strip_html(artists_raw)
+artists_stripped_html = soupx.strip_html(artists_raw)
 tracex.create_trace(mode, "red_rocks", "artists_stripped_html", artists_stripped_html)
 
 artists_stripped_chars = utilityx.strip_string_ends(artists_stripped_html, 0, 10)
@@ -33,7 +33,7 @@ date_pages = soupx.get_pages(date_urls)
 
 dates_html = soupx.scrape_by_class(date_pages, selectors["date"])
 
-dates_stripped_html = utilityx.strip_html(dates_html)
+dates_stripped_html = soupx.strip_html(dates_html)
 tracex.create_trace(mode, "red_rocks", "dates_stripped_html", dates_stripped_html)
 
 dates_stripped_datechars = utilityx.strip_unwanted_chars(dates_stripped_html)

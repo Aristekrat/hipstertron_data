@@ -16,23 +16,22 @@ def selenium_scrape(selector, driver):
 		stripped.append(result.get_attribute('innerHTML'))
 	return stripped
 
-# Initializes selenium for Ogden, First Bank, Gothic, and Bluebird. Someday, it will need to be rewritten for more flexibility. 
-def initialize_selenium(urls, driver):
+# Initializes Selenium. Not usable other than clicking buttons and pages without buttons. 
+def initialize_selenium(urls, driver, selector=None):
 	driver.get(urls[0])
-	button = driver.find_element_by_css_selector("#loadMoreEvents")
-	actions = webdriver.common.action_chains.ActionChains(driver)
 
-	actions.move_to_element(button)
-	actions.click(button)
-	actions.perform()
+	if (selector):
+		button = driver.find_element_by_css_selector(selector)
+		actions = webdriver.common.action_chains.ActionChains(driver)
 
-	sleep(2)
+		actions.move_to_element(button)
+		actions.click(button)
+		actions.perform()
 
-	actions.click(button)
-	actions.perform()
+		sleep(2)
 
-def simple_initialize(urls, driver):
-	driver.get(urls[0])
+		actions.click(button)
+		actions.perform()
 
 def end_driver(driver):
 	driver.close()

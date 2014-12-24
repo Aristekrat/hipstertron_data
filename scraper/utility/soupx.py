@@ -10,6 +10,13 @@ header = {
 	"Referer": "https://www.google.com/"
 }
 
+def strip_html(results):
+	stripped = []
+	for result in results:
+		for x in result:
+			stripped.append(x.string)
+	return stripped
+
 # Get Urls and convert to soup object. Works on many or one url
 def get_pages(urls):
 	soup_page = []

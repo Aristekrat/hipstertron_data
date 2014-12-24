@@ -62,8 +62,7 @@ def convert_to_datetime(results):
 			converted.append(concert_date)
 	return converted
 
-# Expands shortened month names, a bit of a dangerous function, it relies on the month being in first position and will break without that
-# TODO - Applied test this one by checking if component[0] equals one of the listed months.
+# Expands shortened month names, a bit of a dangerous function, it relies on the month being in first position and will break otherwise
 # Did not use a month dictionary so I could handle mixed results, eg, "Nov", "November", "Dec", "January"
 def format_months(results):
 	formatted = []
@@ -94,16 +93,15 @@ def format_months(results):
 	return formatted
 
 # Adds the correct year, this function requires the month be in the proper format first
-# Q - what should this function do in case it receives invalid input? 
 # Change this function to dynamically detect the year
 def add_year(results):
 	formatted = []
 	for date in results: 
 		components = date.split()
 		month = components[0]
-		if month == "November" or month == "December":
+		if month == "December":
 			year = " 2014"
-		elif month == "January" or month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August" or "September" or month == "October":
+		elif month == "January" or month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August" or "September" or month == "October" or month == "November":
 			year = " 2015"
 		formatted.append(date + year)
 	return formatted

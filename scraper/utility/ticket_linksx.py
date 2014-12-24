@@ -8,7 +8,7 @@ def scrape_concert_links(pages, selector):
 			scraped.append(r.attrs['href'])
 	return scraped
 
-# This function will only work with bs4 objects
+# This function will only work with bs4 objects. Evidently it is only used with Red Rocks.
 def scrape_links_from_result_set(results):
 	scraped = []
 	for result in results:

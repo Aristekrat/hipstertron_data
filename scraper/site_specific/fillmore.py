@@ -23,14 +23,14 @@ site_html = soupx.get_pages(urls)
 # Artist Section #
 artists_raw = soupx.generic_scrape(site_html, selectors["artist"])
 
-artists_stripped_html = utilityx.strip_html(artists_raw)
+artists_stripped_html = soupx.strip_html(artists_raw)
 tracex.create_trace(mode, "fillmore", "artists_stripped_html", artists_stripped_html)
 
 
 # Dates Section #
 dates_raw = soupx.generic_scrape(site_html, selectors["date"])
 
-dates_stripped_html = utilityx.strip_html(dates_raw)
+dates_stripped_html = soupx.strip_html(dates_raw)
 tracex.create_trace(mode, "fillmore", "dates_stripped_html", dates_stripped_html)
 
 #TODO - create a function that can strip times based on regex

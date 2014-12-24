@@ -11,7 +11,7 @@ urls = urls_library.urls["gothic"]
 
 driver = seleniumx.initialize_driver()
 
-seleniumx.initialize_selenium(urls, driver)
+seleniumx.initialize_selenium(urls, driver, "#loadMoreEvents")
 
 tracex.initialize_trace_file(mode, "gothic")
 
