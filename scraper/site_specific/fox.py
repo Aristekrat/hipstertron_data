@@ -20,8 +20,12 @@ tracex.initialize_trace_file(mode, "fox")
 artists_raw = seleniumx.selenium_scrape(selectors['artist'], driver)
 
 artists_stripped_chars = utilityx.strip_unwanted_chars(artists_raw)
-# Note - the list still represents &s as &amp, but apparently that's harmless, it'll be converted when redisplayed
+# Note - the list still represents &s as &amp, but apparently that's harmless, it'll be converted when redisplayed. UPDATE, not actually true :-(
 tracex.create_trace(mode, "fox", "artists_stripped_chars", artists_stripped_chars)
+
+artists_format_capitalization = utilityx.correct_capitalization(artists_stripped_chars)
+tracex.create_trace(mode, "fox", "artists_format_capitalization", artists_format_capitalization)
+
 
 # Dates Section #
 dates_month = seleniumx.selenium_scrape(selectors['month'], driver)
@@ -55,7 +59,7 @@ tracex.create_trace(mode, "fox", "ticket_links", ticket_links)
 
 
 # DB Function #
-utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, 10)
+utilityx.add_concert_to_database(mode, artists_format_capitalization, dates_datetime, ticket_links, 10)
 
 print("End of Fox Theater script reached, exiting.")
 
