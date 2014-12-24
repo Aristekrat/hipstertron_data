@@ -8,7 +8,7 @@ from libraries import selector_library
 from test_helpers import utilityh, dateh
 from stack_trace import first_bank_trace
 
-selectors = selector_library.bluebird
+selectors = selector_library.first_bank
 
 driver = webdriver.PhantomJS()
 
@@ -18,7 +18,7 @@ driver.get("source/first_bank.html")
 artists_raw = seleniumx.selenium_scrape(selectors['artist'], driver)
 dates_raw = seleniumx.selenium_scrape(selectors['date'], driver)
 
-class GothicTestCase(unittest.TestCase):
+class FirstBankTestCase(unittest.TestCase):
 	# Length Comparison Tests
 	def test_raw_html_list_length(self):
 		self.assertEqual(len(artists_raw), len(dates_raw), len(first_bank_trace.ticket_links_raw))

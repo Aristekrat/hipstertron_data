@@ -8,7 +8,7 @@ from libraries import selector_library
 from test_helpers import utilityh, dateh
 from stack_trace import gothic_trace
 
-selectors = selector_library.bluebird
+selectors = selector_library.gothic
 
 driver = webdriver.PhantomJS()
 

@@ -2,8 +2,7 @@ from selenium import webdriver
 from time import sleep
 
 # I was almost able to initialize the driver here and eliminate passing it in to subsequent functions.
-# However, it caused an error when another selenium script ran. There has to be a way to initialize here and then end it here
-# At appropriate times. 
+# However, it caused an error when another selenium script ran. There has to be a way to initialize here and then end it here at appropriate times. 
 def initialize_driver():
 	driver = webdriver.PhantomJS()
 	return driver
