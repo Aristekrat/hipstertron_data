@@ -4,21 +4,20 @@ from flask.ext.cors import CORS
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
-# import time
-# import calendar
+import config
+import uuid
 import os
-import sys
 
 app = Flask(__name__)
 CORS(app, resources='/*', headers='Content-Type')
-app.config.from_object('config')
+app.config.from_object(config)
 
 db = SQLAlchemy(app)
 
 import models
 
-#Begin Routes - for whatever reason the routes fail with No 'Access-Control-Allow-Origin' errors when placed outside of app.py
-#This is true even of the routes logic. It's baffling.
+# Routes - for whatever reason the routes fail with No 'Access-Control-Allow-Origin' errors when placed outside of app.py
+# This is true even of the routes logic. It's baffling.
 def prep_concert_response(results):
 	response = []
 	for result in results:
@@ -41,8 +40,9 @@ def returnConcerts(result_count, offset_number):
 @app.route('/sendEmail', methods=['POST'])
 def sendEmail():
 	email_data = request.get_json()
-	newEmail = models.Emails(email = email_data['email'], frequency = email_data['frequency'])
-	db.session.add(newEmail)
+	user_id = str(uuid.uuid4())
+	new_user = models.Users(email = email_data['email'], frequency = email_data['frequency'], userId = user_id)
+	db.session.add(new_user)
 	try: 
 		db.session.commit()
 		resp = "Complete"

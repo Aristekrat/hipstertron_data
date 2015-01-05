@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 from app import db
 
 class Venue(db.Model):
@@ -25,9 +27,15 @@ class Denver_Concerts(db.Model):
 	def __repr__(self):
 		return '<band %r>' % self.band
 
-class Emails(db.Model):
-	__tablename__ = "emails"
+class Users(db.Model):
+	__tablename__ = "users"
 	email = db.Column(db.String(120), nullable=False, primary_key=True)
 	frequency = db.Column(db.String(60), nullable=False)
+	userId = db.Column(db.String(255), nullable=False, unique=True)
 
-# db.create_all()
+class User_Music(db.Model):
+	__tablename__ = "user_music"
+	resultId = db.Column(db.Integer, primary_key=True)
+	userId = db.Column(db.String(255), db.ForeignKey('users.userId'), nullable=False)
+	artistName = db.Column(db.String(255), nullable=False)
+	count = db.Column(db.Integer, nullable = False)
