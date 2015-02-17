@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex
+from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex, soupx
 from libraries import selector_library, urls_library
 from selenium import webdriver
 
@@ -58,8 +58,27 @@ ticket_links = ticket_linksx.ticket_link_prefix("http://foxtheatre.com", ticket_
 tracex.create_trace(mode, "fox", "ticket_links", ticket_links)
 
 
+# Concert Prices Section #
+ticket_prices = ticket_linksx.no_prices(ticket_links)
+
+# Fox still can't be parsed with BS4
+# ticket_pages = soupx.get_pages(ticket_links)
+
+# ticket_prices_raw = soupx.generic_scrape(ticket_pages, selectors['ticket_price'])
+# tracex.create_trace(mode, "fox", "ticket_prices_raw", ticket_prices_raw)
+
+# ticket_prices_html = soupx.strip_html(ticket_prices_raw)
+# tracex.create_trace(mode, "fox", "ticket_prices_html", ticket_prices_html)
+
+# ticket_prices_without_fees = ticket_linksx.find_prices(ticket_prices_html)
+# tracex.create_trace(mode, "fox", "ticket_prices_without_fees", ticket_prices_without_fees)
+
+# ticket_prices = ticket_linksx.add_fee_estimate(ticket_prices_without_fees)
+# tracex.create_trace(mode, "fox", "ticket_prices", ticket_prices)
+
+
 # DB Function #
-utilityx.add_concert_to_database(mode, artists_format_capitalization, dates_datetime, ticket_links, 10)
+utilityx.add_concert_to_database(mode, artists_format_capitalization, dates_datetime, ticket_links, ticket_prices, 10)
 
 print("End of Fox Theater script reached, exiting.")
 

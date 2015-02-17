@@ -1,6 +1,6 @@
 urls = {
 	"gothic": ['http://www.gothictheatre.com/events'], 
-	"paramount": ["http://www.paramountdenver.com/"], 
+	"paramount": ["http://www.altitudetickets.com/EventWidget/GetByVenue?urlName=paramount-theatre&amp;eventClass=col-md-3 col-sm-4 col-xs-4&amp;targetBlank=true"], 
 	"ogden": ["http://www.ogdentheatre.com/events"],
 	"bluebird": ["http://www.bluebirdtheater.net/events"],
 	"fillmore": ["http://www.fillmoreauditorium.org/events/"],
@@ -13,5 +13,16 @@ urls = {
 				"http://redrocksonline.com/concerts-events/calendar/2015/07",
 				"http://redrocksonline.com/concerts-events/calendar/2015/08",
 				"http://redrocksonline.com/concerts-events/calendar/2015/09",
-				"http://redrocksonline.com/concerts-events/calendar/2015/10"]
+				"http://redrocksonline.com/concerts-events/calendar/2015/10"],
+	"fiddlers_green": ["http://www.fiddlersgreenamp.com/events"],
+	"summit": ["http://www.thesummitmusichall.com/events.cfm?page=1&m=2&y=2015",
+				"http://www.thesummitmusichall.com/events.cfm?page=2&m=2&y=2015",
+				"http://www.thesummitmusichall.com/events.cfm?page=3&m=2&y=2015",
+				"http://www.thesummitmusichall.com/events.cfm?page=4&m=2&y=2015"],
+	"marquis": ["http://www.themarquistheatre.com/events.cfm?page=1&m=2&y=2015",
+	"http://www.themarquistheatre.com/events.cfm?page=2&m=2&y=2015",
+	"http://www.themarquistheatre.com/events.cfm?page=3&m=2&y=2015",
+	"http://www.themarquistheatre.com/events.cfm?page=4&m=2&y=2015",
+	"http://www.themarquistheatre.com/events.cfm?page=5&m=2&y=2015"]
+
 }

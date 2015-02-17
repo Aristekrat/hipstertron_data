@@ -21,6 +21,7 @@ class Denver_Concerts(db.Model):
 	showDate = db.Column(db.Date, nullable=False)
 	showLink = db.Column(db.String(255))
 	band = db.Column(db.String(255), index=True, nullable=False)
+	price = db.Column(db.Float)
 	concertVenueId = db.Column(db.Integer, db.ForeignKey('all_venues.venueId'))
 	concertVenue = db.relationship('Venue', backref=db.backref('concert'))
 

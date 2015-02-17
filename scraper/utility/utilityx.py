@@ -35,13 +35,13 @@ def correct_capitalization(results):
 	return corrected 
 
 # NOTE Not sure how I would test this function, particularly in the abstract. Likely need a postgres mock
-def add_concert_to_database(mode, artists, dates, showLinks, id):
+def add_concert_to_database(mode, artists, dates, showLinks, ticketPrices, id):
 	if (mode != "debug"):
 		for index, artist in enumerate(artists):
 			if (dates[index] == None):
 				continue
 			else:
-				new_show = Denver_Concerts(showDate = dates[index], band = artists[index], showLink = showLinks[index], concertVenueId = id)
+				new_show = Denver_Concerts(showDate = dates[index], band = artists[index], showLink = showLinks[index], price = ticketPrices[index], concertVenueId = id)
 				db.session.add(new_show)
 			db.session.commit()
 

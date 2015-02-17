@@ -8,17 +8,15 @@ from test_helpers import utilityh
 from stack_trace import fillmore_trace
 
 selectors = selector_library.fillmore
+source = open('source/fillmore.html')
+site_html = utilityh.soup_from_source(source)
+artists_raw = soupx.generic_scrape(site_html, selectors["artist"])
+dates_raw = soupx.generic_scrape(site_html, selectors["date"])
 
-class FillmoreTestCase(unittest.TestCase):
-	def setUp(self):
-		self.source = open('source/fillmore.html')
-		self.site_html = utilityh.soup_from_source(self.source)
-		self.artists_raw = soupx.generic_scrape(self.site_html, selectors["artist"])
-		self.dates_raw = soupx.generic_scrape(self.site_html, selectors["date"])
-	
+class FillmoreTestCase(unittest.TestCase):	
 	# Length Comparison Tests
 	def test_raw_html_list_length(self):
-		self.assertEqual(len(self.artists_raw), len(self.dates_raw))
+		self.assertEqual(len(artists_raw), len(dates_raw))
 
 	def test_stripped_html_list_length(self):
 		self.assertEqual(len(fillmore_trace.artists_stripped_html), len(fillmore_trace.dates_stripped_html))
@@ -29,17 +27,12 @@ class FillmoreTestCase(unittest.TestCase):
 	def test_dates_format_special_length(self):
 		self.assertEqual(len(fillmore_trace.artists_stripped_html), len(fillmore_trace.dates_format_special))
 
-	def test_stripped_html_list_length(self):
-		self.assertEqual(len(fillmore_trace.artists_stripped_html), len(fillmore_trace.dates_stripped_html))
-
 	def test_ticket_links_relative_length(self):
 		self.assertEqual(len(fillmore_trace.artists_stripped_html), len(fillmore_trace.ticket_links_relative))
 
 	def test_final_list_length(self):
 		self.assertEqual(len(fillmore_trace.artists_stripped_html), len(fillmore_trace.ticket_links), len(fillmore_trace.dates_datetime))
-	
-	def tearDown(self):
-		self.source.close()
 
 if __name__ == '__main__':
     unittest.main()
+    source.close()

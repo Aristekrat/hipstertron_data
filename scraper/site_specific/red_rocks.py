@@ -54,7 +54,25 @@ ticket_links = ticket_linksx.scrape_concert_links(site_html, selectors["ticket_u
 tracex.create_trace(mode, "red_rocks", "ticket_links", ticket_links)
 
 
+# Concert Prices Section #
+ticket_pages = soupx.get_pages(ticket_links)
+
+ticket_prices_raw = soupx.generic_scrape(ticket_pages, selectors['ticket_price'])
+
+# ticket_prices_split = site_specificx.split_prices_text(ticket_prices_raw)
+# tracex.create_trace(mode, "red_rocks", "ticket_prices_split", ticket_prices_split)
+
+ticket_prices_without_fees = ticket_linksx.find_prices(ticket_prices_raw)
+tracex.create_trace(mode, "red_rocks", "ticket_prices_without_fees", ticket_prices_without_fees)
+
+ticket_prices_patched = ticket_linksx.patch_no_results_found(ticket_prices_raw, ticket_prices_without_fees)
+tracex.create_trace(mode, "red_rocks", "ticket_prices_patched", ticket_prices_patched)
+
+ticket_prices = ticket_linksx.add_fee_estimate(ticket_prices_patched)
+tracex.create_trace(mode, "red_rocks", "ticket_prices", ticket_prices)
+
+
 # DB Function #
-utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, 9)
+utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, ticket_prices, 9)
 
 print("End of Red Rocks script reached, exiting.")

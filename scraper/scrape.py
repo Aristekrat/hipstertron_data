@@ -6,9 +6,9 @@ exec(compile(open('scraper/site_specific/fillmore.py', "rb").read(), 'fillmore.p
 exec(compile(open('scraper/site_specific/bluebird.py', "rb").read(), 'bluebird.py', 'exec'))
 exec(compile(open('scraper/site_specific/first_bank.py', "rb").read(), 'first_bank.py', 'exec'))
 exec(compile(open('scraper/site_specific/red_rocks.py', "rb").read(), 'red_rocks.py', 'exec'))
-exec(compile(open('scraper/site_specific/pepsi_center.py', "rb").read(), 'pepsi_center.py', 'exec'))
 exec(compile(open('scraper/site_specific/paramount.py', "rb").read(), 'paramount.py', 'exec'))
-#exec(compile(open(prefix + 'fiddlers_green.py', "rb").read(), 'fiddlers_green.py', 'exec')) This one needs to be updated before reintegration
+exec(compile(open('scraper/site_specific/fiddlers_green.py', "rb").read(), 'fiddlers_green.py', 'exec'))
 exec(compile(open('scraper/site_specific/fox.py', "rb").read(), 'fox.py', 'exec'))
+exec(compile(open('scraper/site_specific/pepsi_center_selenium.py', "rb").read(), 'pepsi_center_selenium.py', 'exec'))
 
 print("Scrape completed")

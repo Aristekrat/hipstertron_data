@@ -21,10 +21,13 @@ def strip_html(results):
 def get_pages(urls):
 	soup_page = []
 	for url in urls:
-		req = Request(url, headers = header)
-		page = urlopen(req)
-		soupified = BeautifulSoup(page)
-		soup_page.append(soupified)
+		try: 
+			req = Request(url, headers = header)
+			page = urlopen(req)
+			soupified = BeautifulSoup(page)
+			soup_page.append(soupified)
+		except:
+			continue
 	return soup_page
 
 # The standard function for both artist and date scraping

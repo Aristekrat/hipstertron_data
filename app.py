@@ -23,7 +23,7 @@ def prep_concert_response(results):
 	for result in results:
 		venue_info = models.Venue.query.get(result.concertVenueId)
 		string_date = str(result.showDate) #sending in the object straight causes a cross origin error for some reason.
-		concert = {"date": string_date, "band": result.band, "showLink": result.showLink, "venue": venue_info.venueName}
+		concert = {"date": string_date, "band": result.band, "showLink": result.showLink, "venue": venue_info.venueName, "price": result.price}
 		response.append(concert)
 	return response
 

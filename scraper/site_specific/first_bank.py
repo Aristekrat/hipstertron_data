@@ -1,11 +1,11 @@
 import sys
 sys.path.append("..")
-from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex
+from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex, soupx
 from libraries import selector_library, urls_library
 
 mode = tracex.determine_file_mode()
 
-selectors = selector_library.firstbank
+selectors = selector_library.first_bank
 
 urls = urls_library.urls["first_bank"]
 
@@ -49,8 +49,27 @@ ticket_links = utilityx.lazy_strip(ticket_links_raw, 1)
 tracex.create_trace(mode, "first_bank", "ticket_links", ticket_links)
 
 
+# Concert Prices Section #
+ticket_pages = soupx.get_pages(ticket_links)
+
+ticket_prices_raw = soupx.generic_scrape(ticket_pages, selectors['ticket_price'])
+# tracex.create_trace(mode, "first_bank", "ticket_prices_raw", ticket_prices_raw)
+
+ticket_prices_html = soupx.strip_html(ticket_prices_raw)
+tracex.create_trace(mode, "first_bank", "ticket_prices_html", ticket_prices_html)
+
+ticket_prices_without_fees = ticket_linksx.find_prices(ticket_prices_html)
+tracex.create_trace(mode, "first_bank", "ticket_prices_without_fees", ticket_prices_without_fees)
+
+ticket_prices_patched = ticket_linksx.patch_no_results_found(ticket_prices_raw, ticket_prices_without_fees)
+tracex.create_trace(mode, "first_bank", "ticket_prices_patched", ticket_prices_patched)
+
+ticket_prices = ticket_linksx.add_fee_estimate(ticket_prices_patched)
+tracex.create_trace(mode, "first_bank", "ticket_prices", ticket_prices)
+
+
 # DB Function #
-utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, 5)
+utilityx.add_concert_to_database(mode, artists_stripped_chars, dates_datetime, ticket_links, ticket_prices, 5)
 
 print("End of 1st Bank script reached, exiting.")
 

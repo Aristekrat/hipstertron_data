@@ -24,10 +24,26 @@ def combine(first_set, second_set):
 		raise ValueError ("One set is longer than the other!")
 
 # Applies to : Pepsi
-# This function gets rid of the "Blah blah world tour" nonsense. It can probably be refactored into an all purpose artist filter
-def pepsi_strip_artists(results):
-	stripped = []
-	for artist in results:
-		x = re.split('[:"-]', artist)
-		stripped.append(str(x[0]))
-	return stripped
+# # This function gets rid of the "Blah blah world tour" nonsense. It can probably be refactored into an all purpose artist filter
+# def pepsi_strip_artists(results):
+# 	stripped = []
+# 	for artist in results:
+# 		x = re.split('[:"-]', artist)
+# 		stripped.append(str(x[0]))
+# 	return stripped
+
+# def swift_fix(results):
+# 	results.insert(-1, "javascript:void(0);")
+
+# Applies to : Red Rocks
+# Red Rocks ticket prices are hidden in a big lump of text. I use this function to extract the correct lump. 
+def split_prices_text(results):
+	prices = []
+	for result in results:
+		if result:
+			x = re.split('\$', str(result))
+			if len(x) >= 2:
+				prices.append(x[1])
+			else:
+				prices.append("Unavailable")
+	return prices

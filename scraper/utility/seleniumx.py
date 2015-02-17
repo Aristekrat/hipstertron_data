@@ -32,5 +32,18 @@ def initialize_selenium(urls, driver, selector=None):
 		actions.click(button)
 		actions.perform()
 
+# Initializes Selenium. Not usable other than clicking buttons and pages without buttons. 
+def new_and_better(urls, driver, times=0, selector=None):
+	driver.get(urls[0])
+	if (selector):
+		button = driver.find_element_by_css_selector(selector)
+		actions = webdriver.common.action_chains.ActionChains(driver)
+		while times > 0:
+			actions.move_to_element(button)
+			actions.click(button)
+			actions.perform()
+			sleep(5)
+			times = times - 1
+
 def end_driver(driver):
 	driver.close()

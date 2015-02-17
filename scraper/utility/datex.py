@@ -12,19 +12,21 @@ def cull_date_and_month(results):
 		
 		for index, component in enumerate(components):
 			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', component)
-			if (x):
+			if x:
 				month_item = components[index]
 				date_item = components[index + 1]
 				standard_result = month_item + " " + date_item
 				# This if block block detects date ranges, eg 2-5. I used the length property because most proper, non-range dates will have only a length of 2
-				if (len(date_item) > 2):
+				if len(date_item) > 2:
 					t = re.search('\-', date_item)
-					if (not t):
-						culled.append(standard_result)
+					z = re.search('th|rd|st', date_item)
+					if z: # This date has char appendage, eg, 1st. Remove it.
+						culled.append(month_item + " " + date_item[:-2])
+					elif t: # This is a range, append just the first date.
+						culled.append(month_item + " " + date_item[0])
 						break
 					else: 
-						# Need a range handler function
-						culled.append(month_item + " " + date_item[0])
+						culled.append(standard_result)	
 						break
 				else: 
 					culled.append(standard_result)
@@ -85,6 +87,8 @@ def format_months(results):
 			month = "March"
 		elif month == "Apr":
 			month = "April"
+		elif month == "Jul":
+			month = "July"
 		elif month == "Aug":
 			month = "August"
 		components[0] = month
@@ -99,9 +103,9 @@ def add_year(results):
 	for date in results: 
 		components = date.split()
 		month = components[0]
-		if month == "December":
-			year = " 2014"
-		elif month == "January" or month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August" or "September" or month == "October" or month == "November":
+		if month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August" or "September" or month == "October" or month == "November":
 			year = " 2015"
+		elif month == "January":
+			year = " 2016"
 		formatted.append(date + year)
 	return formatted

@@ -30,13 +30,25 @@ class BluebirdTestCase(unittest.TestCase):
 		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.dates_stripped_chars))
 
 	def test_dates_format_month_length(self):
-		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.dates_format_year))
+		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.dates_format_month))
 
 	def test_dates_format_year_length(self):
 		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.dates_format_year))
 
+	def test_ticket_links_raw_length(self):
+		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.ticket_links_raw))
+
+	def test_ticket_links_raw_length(self):
+		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.ticket_links))
+
+	def test_ticket_links_raw_length(self):
+		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.ticket_prices_without_fees))
+
+	def test_ticket_links_raw_length(self):
+		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.ticket_prices_patched))
+
 	def test_final_list_length(self):
-		self.assertEqual(len(bluebird_trace.artists_stripped_chars), len(bluebird_trace.dates_datetime), len(bluebird_trace.ticket_links))
+		self.assertEqual(len(bluebird_trace.ticket_prices), len(bluebird_trace.dates_datetime), len(bluebird_trace.ticket_links))
 
 if __name__ == '__main__':
 	unittest.main()

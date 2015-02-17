@@ -52,7 +52,12 @@ ticket_links = ticket_linksx.ticket_link_prefix("http://www.fillmoreauditorium.o
 tracex.create_trace(mode, "fillmore", "ticket_links", ticket_links)
 
 
+# Concert Prices Section #
+ticket_prices = ticket_linksx.no_prices(ticket_links)
+tracex.create_trace(mode, "fillmore", "ticket_prices", ticket_prices)
+
+
 # DB Function #
-utilityx.add_concert_to_database(mode, artists_stripped_html, dates_datetime, ticket_links, 4)
+utilityx.add_concert_to_database(mode, artists_stripped_html, dates_datetime, ticket_links, ticket_prices, 4)
 
 print("End of Fillmore script reached, exiting.")

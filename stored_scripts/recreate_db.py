@@ -6,6 +6,6 @@ from app import db
 import models
 
 db.engine.execute("DROP TABLE denver_concerts")
-db.engine.execute("DROP TABLE emails")
+db.engine.execute("DROP TABLE users")
 
 db.create_all()
