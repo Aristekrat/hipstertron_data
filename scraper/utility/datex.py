@@ -87,6 +87,8 @@ def format_months(results):
 			month = "March"
 		elif month == "Apr":
 			month = "April"
+		elif month == "Jun":
+			month = "June"
 		elif month == "Jul":
 			month = "July"
 		elif month == "Aug":
