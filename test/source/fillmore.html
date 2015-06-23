@@ -2,107 +2,38 @@
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
 <head profile="http://gmpg.org/xfn/11">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Fillmore Auditorium Events | Fillmore Auditorium</title>
-<link href="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/style.css" rel="stylesheet" type="text/css"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/style.css" rel="stylesheet" type="text/css"/>
 <style>
+
 
 #sidebar {
 	float: left;
-	margin: 0;
+	margin: 0 0 0 5px;
 }
 
 #content {
-	float: right;
-}
-#categories_menu ul li, #categories_menu ul li a {
-background-color: #4c5559;
-color: #ffffff;
+	float: left;
 }
 
-#menu ul li a {
-color: #ffffff;
-}
-
-.archive_title a, .nivo-caption {
-color: #ffffff;
-}
-
-#content, #content_full, .widget, #slider-container, .post, .page {
-background-color: #ffffff;
-}
-
-.entry blockquote, .entry pre, .entry code, .comment {
-background-color: #fafafa;
-}
-
-.post-categories a, .nivo-caption span, .category_item {
-background-color: #a90404;
-color: #ffffff;
-}
-
-.widgettitle {
-background-color: #94908a;
-color: #ffffff;
-}
-
- #sidebar .widget_container li a, .navigation_item a, .widget_container th, .widget_container td {
-background-color: #f2f2f2;
-color: #949494;
-}
-
-body {
-color: #4f4f4f;
-}
-
-.post_title, .post_title a, .subtitle, .subtitle a {
-color: #3a3a3a;
-}
-
-.date, .comments_number, .comments_text {
-color: #aeaeae;
-}
-
-.entry a, #comments a, #reply a, #sidebar p a {
-color: #9c9995;
-}
-
-.inputtext, .inputarea, #s {
-background-color: #eaeaea;
-color: #111111;
-}
-
-#submit, #searchsubmit, .inputbutton {
-background-color: #898989;
-color: #ffffff;
-}
-
-#footer {
-background-color: #111111;
-color: #dddddd;
-}
-
-.widgetbtitle {
-color: #b1aaa6;
-}
-
-.widgetb a, .widgetb_container li a  {
-color: #88827f;
-}
-
-.twitter_status li {
-background-color: #000000;
-}
-
+/* newsletter sign up */
+#tmVenueDialog { border-radius:0px!important; border:4px solid #94908a; }
+#tmVenueDialog h2 { text-transform:uppercase!important; color:#DD3434!important; font-size:20px!important; }
+#subscribeFormContainer input { width:300px!important; }
 </style>
 <link href="http://www.fillmoreauditorium.org/feed/" rel="alternate" title="Fillmore Auditorium RSS Feed" type="application/rss+xml"/>
 <link href="http://www.fillmoreauditorium.org/feed/atom/" rel="alternate" title="Fillmore Auditorium Atom Feed" type="application/atom+xml"/>
 <link href="http://www.fillmoreauditorium.org/xmlrpc.php" rel="pingback"/>
+<!-- All in One SEO Pack 2.2.5.1 by Michael Torbert of Semper Fi Web Design[374,436] -->
+<meta content="CONTENTS" name="description"/>
+<!-- /all in one seo pack -->
 <link href="http://www.fillmoreauditorium.org/wp-includes/css/dashicons.min.css?ver=3.9.1" id="dashicons-css" media="all" rel="stylesheet" type="text/css"/>
 <link href="http://www.fillmoreauditorium.org/wp-includes/js/thickbox/thickbox.css?ver=3.9.1" id="thickbox-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="http://www.fillmoreauditorium.org/wp-content/plugins/events-manager/includes/css/events_manager.css?ver=5.53" id="events-manager-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="http://www.fillmoreauditorium.org/wp-content/plugins/mailchimp-for-wp/assets/css/checkbox.min.css?ver=2.1" id="mailchimp-for-wp-checkbox-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="http://www.fillmoreauditorium.org/wp-content/plugins/mailchimp-for-wp/assets/css/form.min.css?ver=2.1" id="mailchimp-for-wp-form-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="http://www.fillmoreauditorium.org/wp-content/plugins/bookingcom-official-searchbox/css/bos_searchbox.css?ver=1.1" id="bos_sb_main_css-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/plugins/events-manager/includes/css/events_manager.css?ver=5.55" id="events-manager-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/plugins/mailchimp-for-wp/assets/css/checkbox.min.css?ver=2.2.5" id="mailchimp-for-wp-checkbox-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/plugins/mailchimp-for-wp/assets/css/form.min.css?ver=2.2.5" id="mailchimp-for-wp-form-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/plugins/bookingcom-official-searchbox/css/bos_searchbox.css?ver=1.3" id="bos_sb_main_css-css" media="all" rel="stylesheet" type="text/css"/>
 <script src="http://www.fillmoreauditorium.org/wp-includes/js/jquery/jquery.js?ver=1.11.0" type="text/javascript"></script>
 <script src="http://www.fillmoreauditorium.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1" type="text/javascript"></script>
 <script src="http://www.fillmoreauditorium.org/wp-includes/js/jquery/ui/jquery.ui.core.min.js?ver=1.10.4" type="text/javascript"></script>
@@ -122,7 +53,16 @@ background-color: #000000;
 var EM = {"ajaxurl":"http:\/\/www.fillmoreauditorium.org\/wp-admin\/admin-ajax.php","locationajaxurl":"http:\/\/www.fillmoreauditorium.org\/wp-admin\/admin-ajax.php?action=locations_search","firstDay":"1","locale":"en","dateFormat":"dd\/mm\/yy","ui_css":"http:\/\/www.fillmoreauditorium.org\/wp-content\/plugins\/events-manager\/includes\/css\/ui-lightness.css","show24hours":"0","is_ssl":"","txt_search":"Search","txt_searching":"Searching...","txt_loading":"Loading..."};
 /* ]]> */
 </script>
-<script src="http://www.fillmoreauditorium.org/wp-content/plugins/events-manager/includes/js/events-manager.js?ver=5.53" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/plugins/events-manager/includes/js/events-manager.js?ver=5.55" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/respond.min.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/jquery.prettyPhoto.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/jquery-supersleight.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/jquery.nivo.slider.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/jquery.iosslider.min.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/fonts/cufon-yui.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/fonts/Bebas_Neue_400.font.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/fonts/League_Gothic_400.font.js?ver=3.9.1" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/init.js?ver=3.9.1" type="text/javascript"></script>
 <link href="http://www.fillmoreauditorium.org/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
 <link href="http://www.fillmoreauditorium.org/wp-includes/wlwmanifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml"/>
 <link href="http://www.fillmoreauditorium.org/fillmore-auditorium-info/" rel="next" title="Fillmore Auditorium Information"/>
@@ -139,39 +79,75 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 </script>
-<!-- All in One SEO Pack 2.2.2 by Michael Torbert of Semper Fi Web Design[291,353] -->
-<meta content="CONTENTS" name="description"/>
-<!-- /all in one seo pack -->
-<style id="custom-background-css" type="text/css">
-body.custom-background { background-color: #1e1f21; }
+<style type="text/css">#logo { background-image: url('http://www.fillmoreauditorium.org/wp-content/uploads/2015/04/FILLMORE-title.png'); }
+#categories_menu ul li, #categories_menu ul li a, .categories-toggle { background-color: #4c5559; }
+#categories_menu ul li, #categories_menu ul li a, .categories-toggle { color: #ffffff; }
+#menu ul li a { color: #ffffff; }
+.widgettitle { background-color: #94908a; }
+.widgettitle { color: #ffffff; }
+#content, #content_full, .widget, #slider-container, .post, .page, .iosSlider_wrapper { background-color: #ffffff; }
+body { color: #4f4f4f; }
+.entry a, #comments a, #reply a, #sidebar p a { color: #9c9995; }
+.post_title, .post_title a, .subtitle, .subtitle a { color: #3a3a3a; }
+.entry blockquote, .entry pre, .entry code, .comment { background-color: #fafafa; }
+.date, .comments_number, .comments_text { color: #aeaeae; }
+.archive_title a, .nivo-caption, .slide_metadata { color: #ffffff; }
+.post-categories a, .nivo-caption span, .category_item, .slide_category { background-color: #a90404; }
+.post-categories a, .nivo-caption span, .category_item { color: #ffffff; }
+.inputtext, .inputarea, #s { background-color: #eaeaea; }
+.inputtext, .inputarea, #s { color: #111111; }
+#submit, #searchsubmit, .inputbutton { background-color: #898989; }
+#submit, #searchsubmit, .inputbutton { color: #ffffff; }
+.widgetbtitle { color: #b1aaa6; }
+#footer { background-color: #111111; }
+#footer { color: #dddddd; }
+.widgetb a, .widgetb_container li a { color: #88827f; }
+.twitter_status li { background-color: #000000; }
+#sidebar .widget_container li a, .navigation_item a, .widget_container th, .widget_container td { background-color: #f2f2f2; }
+#sidebar .widget_container li a, .navigation_item a, .widget_container th, .widget_container td { color: #949494; }
+</style><style>
 </style>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/includes/js/jquery-1.4.1.min.js" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/includes/js/jquery.prettyPhoto.js" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/includes/js/jquery-supersleight.js" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/includes/js/jquery.nivo.slider.js" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/fonts/cufon-yui.js" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/fonts/Bebas_Neue_400.font.js" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/fonts/League_Gothic_400.font.js" type="text/javascript"></script>
+<style id="custom-background-css" type="text/css">
+body.custom-background { background-image: url('http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/images/bg.jpg'); background-repeat: repeat; background-position: top left; background-attachment: fixed; }
+</style>
+<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/includes/js/responsive-nav.js"></script>
 <script type="text/javascript">
-			Cufon.replace('#categories_menu ul li a, #menu ul li a, #searchsubmit, #submit, .nivo-caption, .archive_title a, .widgettitle, .widgetbtitle', {fontFamily: 'League Gothic'});
-			Cufon.replace('.nivo-caption p, .nivo-caption span, .post_title, .pagetitle, .archive .post-categories a, .category_item, .singlepost .post-categories a, .comments_number, .comments_text, .entry h1, .entry h3, .entry h4, .entry h5, .entry h6, .subtitle', {fontFamily: 'Bebas Neue'});
-			
-			// If you need accents, reverse accents, and other language-specific characters, comment the two lines above and uncomment the line below
-			//Cufon.replace('#categories_menu ul li a, #menu ul li a, #searchsubmit, #submit, .nivo-caption, .archive_title a, .widgettitle, .widgetbtitle, .nivo-caption p, .nivo-caption span, .post_title, .pagetitle, .archive .post-categories a, .category_item, .singlepost .post-categories a, .comments_number, .comments_text, .entry h1, .entry h3, .entry h4, .entry h5, .entry h6, .subtitle', {fontFamily: 'League Gothic'});
-			
+
+	Cufon.replace('#categories_menu1 ul li a, .categories-toggle, #menu ul li a, #searchsubmit, #submit, .nivo-caption, .archive_title a, .widgettitle, .widgetbtitle, .alert', {fontFamily: 'League Gothic'});
+        Cufon.replace('.nivo-caption p, .nivo-caption span, .slide_metadata, .post_title, .pagetitle, .archive .post-categories a, .category_item, .singlepost .post-categories a, .comments_number, .comments_text, .entry h1, .entry h3, .entry h4, .entry h5, .entry h6, .subtitle, .btn', {fontFamily: 'Bebas Neue'});
+
 </script>
-<script src="http://www.fillmoreauditorium.org/wp-content/themes/magzimus_modified/includes/js/init.js" type="text/javascript"></script>
+<!-- NEWSLETTER SIGN UP -->
+<script src="https://widget.ticketmonster.com/widgets/venue-signup.js" type="text/javascript"></script>
+<script type="text/javascript">window.TiMoVenueWidget = {"name": "Fillmore Auditorium"};</script>
+<link href="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/css/theredrocks_responsive.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/css/responsive-nav.css" rel="stylesheet"/>
+<link href="http://www.fillmoreauditorium.org/wp-content/themes/magzimusv3/css/menu-styles.css" rel="stylesheet"/>
 </head>
 <body class="page page-id-4 page-template-default custom-background">
+<!-- INITIALIZE FACEBOOK COMMENTS -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+
+  var js, fjs = d.getElementsByTagName(s)[0];
+
+  if (d.getElementById(id)) return;
+
+  js = d.createElement(s); js.id = id;
+
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=269311109844316";
+
+  fjs.parentNode.insertBefore(js, fjs);
+
+}(document, 'script', 'facebook-jssdk'));</script>
 <!-- DO NOT DELETE THIS!!! -->
 <div id="options">
-<!--<input type="hidden" name="option[theme_sliderspeed]" id="theme_sliderspeed" value="" />-->
 <input id="ts_slider_speed" name="option[ts_slider_speed]" type="hidden" value="6"/>
 </div>
 <!-- START EDITING HERE-->
 <div id="container">
 <div id="header">
-<a href="http://www.fillmoreauditorium.org" id="logo"><img src="http://www.fillmoreauditorium.org/wp-content/uploads/2012/09/FILLMORE-title.png"/></a>
+<a href="http://www.fillmoreauditorium.org" id="logo"><img src="http://www.fillmoreauditorium.org/wp-content/uploads/2015/04/FILLMORE-title.png"/></a>
 <div id="menu">
 <div class="menu-topmenu-container"><ul class="menu" id="menu-topmenu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-547" id="menu-item-547"><a href="http://www.fillmoreauditorium.org/fillmore-auditorium-hotels/">Book Your Hotel</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-99" id="menu-item-99"><a href="http://www.fillmoreauditorium.org/fillmore-auditorium-info/">info</a></li>
@@ -183,33 +159,39 @@ body.custom-background { background-color: #1e1f21; }
 </div>
 <div class="clearer"></div>
 <div id="social_links">
-<a class="social rssfeed" href="http://www.fillmoreauditorium.org/feed/" target="_blank">RSS</a>
+<a class="social twitter" href="https://twitter.com/FillmoreA">Twitter</a>
+<a class="social facebook" href="https://www.facebook.com/pages/Fans-of-Fillmore-Auditorium/1427328440813013">Facebook</a>
+<a class="social rssfeed" href="http://www.fillmoreauditorium.org/feed/">RSS</a>
 </div>
 <div class="clearer"></div>
 </div>
 <div class="clearer"></div>
 <div id="wrapper">
-<div class="containerblock" id="categories_menu">
-<div class="menu-mainmenu-container"><ul class="menu" id="menu-mainmenu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88" id="menu-item-88"><a href="/">Fillmore Auditorium</a></li>
+<div class="containerblock">
+<nav class="nav-collapse" id="categories_menu1">
+<ul class="menu" id="menu-mainmenu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88" id="menu-item-88"><a href="/">Fillmore Auditorium</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-4 current_page_item menu-item-91" id="menu-item-91"><a href="http://www.fillmoreauditorium.org/events/">Fillmore Auditorium Events</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90" id="menu-item-90"><a href="http://www.fillmoreauditorium.org/fillmore-auditorium-seating-chart/">Seating Chart</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89" id="menu-item-89"><a href="http://www.fillmoreauditorium.org/fillmore-auditorium-tickets/">Ticket Info</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-514" id="menu-item-514"><a href="http://www.fillmoreauditorium.org/fillmore-auditorium-rules/">Rules</a></li>
-</ul></div>
-<form action="http://www.fillmoreauditorium.org" id="searchform" method="get" role="search">
+</ul>
+</nav>
+<div id="search_manual"><form action="http://www.fillmoreauditorium.org" id="searchform" method="get" role="search">
 <div><label class="screen-reader-text" for="s">Search for:</label>
 <input id="s" name="s" type="text" value=""/>
 <button id="searchsubmit" type="submit">Search</button>
 </div>
-</form>
+</form></div>
 <div class="clearer"></div>
 </div>
 <div class="containerblock" id="main">
 <div id="content">
 <div class="post-4 page type-page status-publish hentry singlepost" id="post-4">
 <div class="clearer"></div>
-<h1 class="post_title">Fillmore Auditorium Events</h1>
+<h2 class="post_title">Fillmore Auditorium Events</h2>
 <div class="clearer"></div>
+<div class="date">
+</div>
 <div class="entry">
 <p><script type="text/javascript"><!--
 google_ad_client = "ca-pub-2783012870533657";
@@ -222,68 +204,125 @@ google_ad_height = 60;
 <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js" type="text/javascript">
 </script></p><div id="em-wrapper"><p>Latest schedule of events for the Fillmore Auditorium. View listings and purchase tickets for the upcoming events.</p><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/sound-tribe-sector-9-3/" title="Sound Tribe Sector 9">Sound Tribe Sector 9</a></h3>
-<strong>31 December 2014 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">27</span><span class="eventMonth">Jun</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/in-this-moment-2/" title="In This Moment">In This Moment</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=583423" target="_blank"><img alt="buy tickets for Sound Tribe Sector 9" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Sound Tribe Sector 9"/></a>
+<a href="/tickets.php?event=682109" target="_blank"><img alt="buy tickets for In This Moment" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for In This Moment"/></a>
 </div>
 </div><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/sound-tribe-sector-9-4/" title="Sound Tribe Sector 9">Sound Tribe Sector 9</a></h3>
-<strong>2 January 2015 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">30</span><span class="eventMonth">Jun</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/medeski-martin-and-wood/" title="Medeski, Martin and Wood">Medeski, Martin and Wood</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=583425" target="_blank"><img alt="buy tickets for Sound Tribe Sector 9" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Sound Tribe Sector 9"/></a>
+<a href="/tickets.php?event=674826" target="_blank"><img alt="buy tickets for Medeski, Martin and Wood" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Medeski, Martin and Wood"/></a>
 </div>
 </div><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/sound-tribe-sector-9-5/" title="Sound Tribe Sector 9">Sound Tribe Sector 9</a></h3>
-<strong>3 January 2015 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">9</span><span class="eventMonth">Jul</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/third-eye-blind-dashboard-confessional/" title="Third Eye Blind &amp; Dashboard Confessional">Third Eye Blind &amp; Dashboard Confessional</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=583424" target="_blank"><img alt="buy tickets for Sound Tribe Sector 9" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Sound Tribe Sector 9"/></a>
+<a href="/tickets.php?event=655354" target="_blank"><img alt="buy tickets for Third Eye Blind &amp; Dashboard Confessional" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Third Eye Blind &amp; Dashboard Confessional"/></a>
 </div>
 </div><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/pierce-the-veil-sleeping-with-sirens/" title="Pierce The Veil &amp; Sleeping With Sirens">Pierce The Veil &amp; Sleeping With Sirens</a></h3>
-<strong>31 January 2015 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">18</span><span class="eventMonth">Jul</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/meghan-trainor/" title="Meghan Trainor">Meghan Trainor</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=583876" target="_blank"><img alt="buy tickets for Pierce The Veil &amp; Sleeping With Sirens" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Pierce The Veil &amp; Sleeping With Sirens"/></a>
+<a href="/tickets.php?event=658940" target="_blank"><img alt="buy tickets for Meghan Trainor" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Meghan Trainor"/></a>
 </div>
 </div><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/seether-papa-roach/" title="Seether &amp; Papa Roach">Seether &amp; Papa Roach</a></h3>
-<strong>3 February 2015 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">21</span><span class="eventMonth">Jul</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/danzig/" title="Danzig">Danzig</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=597239" target="_blank"><img alt="buy tickets for Seether &amp; Papa Roach" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Seether &amp; Papa Roach"/></a>
+<a href="/tickets.php?event=674209" target="_blank"><img alt="buy tickets for Danzig" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Danzig"/></a>
 </div>
 </div><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/ben-howard/" title="Ben Howard">Ben Howard</a></h3>
-<strong>7 February 2015 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">29</span><span class="eventMonth">Jul</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/charli-xcx-bleachers/" title="Charli XCX &amp; Bleachers">Charli XCX &amp; Bleachers</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=586968" target="_blank"><img alt="buy tickets for Ben Howard" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Ben Howard"/></a>
+<a href="/tickets.php?event=676089" target="_blank"><img alt="buy tickets for Charli XCX &amp; Bleachers" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Charli XCX &amp; Bleachers"/></a>
 </div>
 </div><div class="eventBox">
 <div class="eventInfo">
-<h3><a href="http://www.fillmoreauditorium.org/events/marilyn-manson/" title="Marilyn Manson">Marilyn Manson</a></h3>
-<strong>11 February 2015 - 7:00PM</strong><br/>
-Fillmore Auditorium - Denver, Colorado
+<div class="eventDate"><span class="eventDay">16</span><span class="eventMonth">Aug</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/rise-against-killswitch-engage-letlive/" title="Rise Against, Killswitch Engage &amp; Letlive">Rise Against, Killswitch Engage &amp; Letlive</a></h3>
 </div>
 <div class="buyNowTicket">
-<a href="/tickets.php?event=604275" target="_blank"><img alt="buy tickets for Marilyn Manson" src="/wp-content/uploads/2011/11/buy-fillmore-tickets.png" title="buy tickets for Marilyn Manson"/></a>
+<a href="/tickets.php?event=671412" target="_blank"><img alt="buy tickets for Rise Against, Killswitch Engage &amp; Letlive" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Rise Against, Killswitch Engage &amp; Letlive"/></a>
 </div>
-</div><a href="/?dbem_rss=main" target="blank">RSS Feed of Events</a>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">20</span><span class="eventMonth">Aug</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/nofx-lagwagon-the-flatliners/" title="NOFX, Lagwagon &amp; The Flatliners">NOFX, Lagwagon &amp; The Flatliners</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=679393" target="_blank"><img alt="buy tickets for NOFX, Lagwagon &amp; The Flatliners" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for NOFX, Lagwagon &amp; The Flatliners"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">28</span><span class="eventMonth">Aug</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/three-days-grace/" title="Three Days Grace">Three Days Grace</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=684121" target="_blank"><img alt="buy tickets for Three Days Grace" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Three Days Grace"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">2</span><span class="eventMonth">Sep</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/social-distortion/" title="Social Distortion">Social Distortion</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=676109" target="_blank"><img alt="buy tickets for Social Distortion" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Social Distortion"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">12</span><span class="eventMonth">Sep</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/empire-of-the-sun/" title="Empire of the Sun">Empire of the Sun</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=671772" target="_blank"><img alt="buy tickets for Empire of the Sun" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Empire of the Sun"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">15</span><span class="eventMonth">Sep</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/damian-marley-stephen-marley-morgan-heritage-tarrus-riley/" title="Damian Marley, Stephen Marley, Morgan Heritage &amp; Tarrus Riley">Damian Marley, Stephen Marley, Morgan Heritage &amp; Tarrus Riley</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=685046" target="_blank"><img alt="buy tickets for Damian Marley, Stephen Marley, Morgan Heritage &amp; Tarrus Riley" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Damian Marley, Stephen Marley, Morgan Heritage &amp; Tarrus Riley"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">17</span><span class="eventMonth">Sep</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/nick-jonas-bebe-rexha/" title="Nick Jonas &amp; BeBe Rexha">Nick Jonas &amp; BeBe Rexha</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=687448" target="_blank"><img alt="buy tickets for Nick Jonas &amp; BeBe Rexha" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Nick Jonas &amp; BeBe Rexha"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">2</span><span class="eventMonth">Oct</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/zz-ward/" title="ZZ Ward">ZZ Ward</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=688621" target="_blank"><img alt="buy tickets for ZZ Ward" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for ZZ Ward"/></a>
+</div>
+</div><div class="eventBox">
+<div class="eventInfo">
+<div class="eventDate"><span class="eventDay">31</span><span class="eventMonth">Oct</span></div>
+<h3><a href="http://www.fillmoreauditorium.org/events/lotus-4/" title="Lotus">Lotus</a></h3>
+</div>
+<div class="buyNowTicket">
+<a href="/tickets.php?event=676925" target="_blank"><img alt="buy tickets for Lotus" src="/wp-content/themes/magzimusv3/images/buy-tickets.png" title="buy tickets for Lotus"/></a>
+</div>
+</div>
 </div>
 </div>
 <div class="clearer"></div>
@@ -303,9 +342,7 @@ Fillmore Auditorium - Denver, Colorado
 <g:plusone></g:plusone>
 </div>
 <br style="clear:both"/></div>
-</div><div class="clearer"></div></li><li class="widget widget_mc4wp_widget" id="mc4wp_widget-2"><div class="widget_container"><h2 class="widgettitle">Subscribe to our Newsletter</h2><div class="ruler"></div>
-<!-- Form by MailChimp for WordPress plugin v2.1 - https://dannyvankooten.com/mailchimp-for-wordpress/ -->
-<form action="http://www.fillmoreauditorium.org/events/" class="form mc4wp-form" id="mc4wp-form-1" method="post"><p style="text-align:center;">Sign up to our newsletter.<br/>
+</div><div class="clearer"></div></li><li class="widget widget_mc4wp_widget" id="mc4wp_widget-2"><div class="widget_container"><h2 class="widgettitle">Subscribe to our Newsletter</h2><div class="ruler"></div><!-- Form by MailChimp for WordPress plugin v2.2.5 - https://mc4wp.com/ --><div class="form mc4wp-form" id="mc4wp-form-1"><form action="http://www.fillmoreauditorium.org/events/" method="post"><p style="text-align:center;">Sign up to our newsletter.<br/>
 <strong><span style="text-transform:uppercase">receive our monthly “What’s on” listings.</span></strong> </p>
 <p>
 <input id="mc4wp_email" name="EMAIL" placeholder="Your email address" required="" style="padding:4px;border:1px solid #c9c9c9;" type="email"/>
@@ -313,9 +350,7 @@ Fillmore Auditorium - Denver, Colorado
 <p>
 <input style="padding:5px;width:100%" type="submit" value="Subscribe"/>
 </p>
-<p style="margin-top:10px"><small style="font-size:10px">We never give out your emails to third parties. All we'll do is email you once a month with what events are coming up. Make sure you check your junk mail for the confirmation email</small></p><textarea name="_mc4wp_required_but_not_really" style="display: none !important;"></textarea><input name="_mc4wp_form_submit" type="hidden" value="1"/><input name="_mc4wp_form_instance" type="hidden" value="1"/><input name="_mc4wp_form_nonce" type="hidden" value="45e0adfabd"/></form>
-<!-- / MailChimp for WP Plugin -->
-</div><div class="clearer"></div></li><li class="widget widget_text" id="text-3"><div class="widget_container"> <div class="textwidget"><script type="text/javascript"><!--
+<p style="margin-top:10px"><small style="font-size:10px">We never give out your emails to third parties. All we'll do is email you once a month with what events are coming up. Make sure you check your junk mail for the confirmation email</small></p><textarea name="_mc4wp_required_but_not_really" style="display: none !important;"></textarea><input name="_mc4wp_form_submit" type="hidden" value="1"/><input name="_mc4wp_form_instance" type="hidden" value="1"/><input name="_mc4wp_form_nonce" type="hidden" value="d1632e55b0"/></form></div><!-- / MailChimp for WP Plugin --></div><div class="clearer"></div></li><li class="widget widget_text" id="text-3"><div class="widget_container"> <div class="textwidget"><script type="text/javascript"><!--
 google_ad_client = "ca-pub-2783012870533657";
 /* SocDefSide */
 google_ad_slot = "1171008447";
@@ -325,12 +360,12 @@ google_ad_height = 250;
 </script>
 <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js" type="text/javascript">
 </script></div>
-</div><div class="clearer"></div></li><li class="widget widget_em_widget" id="em_widget-3"><div class="widget_container"><h2 class="widgettitle">Upcoming Events</h2><div class="ruler"></div><ul><li><a href="http://www.fillmoreauditorium.org/events/sound-tribe-sector-9-3/" title="Sound Tribe Sector 9">Sound Tribe Sector 9</a><br/>
-31 Dec 14</li><li><a href="http://www.fillmoreauditorium.org/events/sound-tribe-sector-9-4/" title="Sound Tribe Sector 9">Sound Tribe Sector 9</a><br/>
-2 Jan 15</li><li><a href="http://www.fillmoreauditorium.org/events/sound-tribe-sector-9-5/" title="Sound Tribe Sector 9">Sound Tribe Sector 9</a><br/>
-3 Jan 15</li><li><a href="http://www.fillmoreauditorium.org/events/pierce-the-veil-sleeping-with-sirens/" title="Pierce The Veil &amp; Sleeping With Sirens">Pierce The Veil &amp; Sleeping With Sirens</a><br/>
-31 Jan 15</li><li><a href="http://www.fillmoreauditorium.org/events/seether-papa-roach/" title="Seether &amp; Papa Roach">Seether &amp; Papa Roach</a><br/>
-3 Feb 15</li><li class="all-events-link"><a href="http://www.fillmoreauditorium.org/events/" title="all events">all events</a></li></ul></div><div class="clearer"></div></li> </ul>
+</div><div class="clearer"></div></li><li class="widget widget_em_widget" id="em_widget-3"><div class="widget_container"><h2 class="widgettitle">Upcoming Events</h2><div class="ruler"></div><ul><li><a href="http://www.fillmoreauditorium.org/events/in-this-moment-2/" title="In This Moment">In This Moment</a><br/>
+27 Jun 15</li><li><a href="http://www.fillmoreauditorium.org/events/medeski-martin-and-wood/" title="Medeski, Martin and Wood">Medeski, Martin and Wood</a><br/>
+30 Jun 15</li><li><a href="http://www.fillmoreauditorium.org/events/third-eye-blind-dashboard-confessional/" title="Third Eye Blind &amp; Dashboard Confessional">Third Eye Blind &amp; Dashboard Confessional</a><br/>
+9 Jul 15</li><li><a href="http://www.fillmoreauditorium.org/events/meghan-trainor/" title="Meghan Trainor">Meghan Trainor</a><br/>
+18 Jul 15</li><li><a href="http://www.fillmoreauditorium.org/events/danzig/" title="Danzig">Danzig</a><br/>
+21 Jul 15</li><li class="all-events-link"><a href="http://www.fillmoreauditorium.org/events/" title="all events">all events</a></li></ul></div><div class="clearer"></div></li> </ul>
 </div>
 <div class="clearer"></div>
 <div class="clearer"></div>
@@ -343,16 +378,20 @@ google_ad_height = 250;
 </div><div class="clearer"></div></li><li class="widgetb widget_text" id="text-6"><h2 class="widgetbtitle">BY FANS, FOR FANS</h2><div class="ruler"></div><div class="widgetb_container"> <div class="textwidget"><small>Website Design by <a href="http://www.puretonicmarketing.com" target="_blank">Pure Tonic Marketing</a></small></div>
 </div><div class="clearer"></div></li> </ul>
 <script type="text/javascript">
+				jQuery('.mc4wp-form').find('[type="submit"]').click(function () {
+					jQuery(this).parents('.mc4wp-form').addClass('mc4wp-form-submitted');
+				});
+			</script><script type="text/javascript">
 /* <![CDATA[ */
 var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/www.fillmoreauditorium.org\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
 /* ]]> */
 </script>
 <script src="http://www.fillmoreauditorium.org/wp-includes/js/thickbox/thickbox.js?ver=3.1-20121105" type="text/javascript"></script>
 <script src="http://www.fillmoreauditorium.org/wp-includes/js/comment-reply.min.js?ver=3.9.1" type="text/javascript"></script>
-<script src="http://www.fillmoreauditorium.org/wp-content/plugins/bookingcom-official-searchbox/js/bos_main.js?ver=1.0" type="text/javascript"></script>
+<script src="http://www.fillmoreauditorium.org/wp-content/plugins/bookingcom-official-searchbox/js/bos_main.js?ver=1.2" type="text/javascript"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var objectL10n = {"destinationErrorMsg":"Sorry, we need at least part of the name to start searching.","tooManyDays":"Your check-out date is more than 30 nights after your check-in date. Bookings can only be made for a maximum period of 30 nights. Please enter alternative dates and try again.","dateInThePast":"Your check-in date is in the past. Please check your dates and try again.","cObeforeCI":"Please check your dates, the check-out date appears to be earlier than the check-in date.","calendar_nextMonth":"Next month","calendar_prevMonth":"Prev month","calendar_closeCalendar":"Close calendar","january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December","mo":"Mo","tu":"Tu","we":"We","th":"Th","fr":"Fr","sa":"Sa","su":"Su","close":"Close","images_js_path":"http:\/\/www.fillmoreauditorium.org\/wp-content\/plugins\/bookingcom-official-searchbox\/images"};
+var objectL10n = {"destinationErrorMsg":"Sorry, we need at least part of the name to start searching.","tooManyDays":"Your check-out date is more than 30 nights after your check-in date. Bookings can only be made for a maximum period of 30 nights. Please enter alternative dates and try again.","dateInThePast":"Your check-in date is in the past. Please check your dates and try again.","cObeforeCI":"Please check your dates, the check-out date appears to be earlier than the check-in date.","calendar_nextMonth":"Next month","calendar_prevMonth":"Prev month","calendar_closeCalendar":"Close calendar","january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December","mo":"Mo","tu":"Tu","we":"We","th":"Th","fr":"Fr","sa":"Sa","su":"Su","updating":"Updating...","close":"Close","placeholder":"e.g. city, region, district or specific hotel","aid":"382821","dest_type":"select","calendar":"0","month_format":"short","flexible_dates":"0","logodim":"blue_150x25","logopos":"left","buttonpos":"right","bgcolor":"#FEBA02","textcolor":"#003580","submit_bgcolor":"#0896FF","submit_bordercolor":"#0896FF","submit_textcolor":"#FFFFFF","images_js_path":"http:\/\/www.fillmoreauditorium.org\/wp-content\/plugins\/bookingcom-official-searchbox\/images"};
 /* ]]> */
 </script>
 <script src="http://www.fillmoreauditorium.org/wp-content/plugins/bookingcom-official-searchbox/js/bos_date.js?ver=1.0" type="text/javascript"></script>
@@ -361,5 +400,9 @@ var objectL10n = {"destinationErrorMsg":"Sorry, we need at least part of the nam
 <div class="clearer"></div>
 </div> <!-- /footer -->
 </div> <!-- /main -->
+<script>
+  var nav = responsiveNav(".nav-collapse");
+</script>
 </body>
 </html>
+<!-- Dynamic page generated in 0.540 seconds. -->

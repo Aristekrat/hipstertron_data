@@ -4,6 +4,9 @@ from datetime import datetime
 
 # Harvests the date from the string. By searching for the month and then adding the result that comes after it.
 # TODO - add a test that performs a findall for the date string and raises a warning if multiple months are found
+# NOTE - there are some total dick sites out there that reduce the month of Sepetember to 'SEP'. I worry that if the regex search is reduced to 'SEP',
+# It will identify too many false positives. TODO - I need to test the matched results surroundings to see if they are numeric. This function isn't really
+# trustworty until then. 
 def cull_date_and_month(results):
 	culled = []
 	for date in results:
@@ -11,7 +14,7 @@ def cull_date_and_month(results):
 		components = string_date.split()
 		
 		for index, component in enumerate(components):
-			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec', component)
+			x = re.search('Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec', component)
 			if x:
 				month_item = components[index]
 				date_item = components[index + 1]
@@ -71,7 +74,7 @@ def format_months(results):
 	for date in results:
 		components = date.split()
 		month = components[0]
-		if month == "Sept":
+		if month == "Sept" or month == "Sep":
 			month = "September"
 		elif month == "Oct":
 			month = "October"
