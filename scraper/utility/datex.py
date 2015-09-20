@@ -101,16 +101,33 @@ def format_months(results):
 		formatted.append(date)
 	return formatted
 
+# Maps a written month to it's numeric counterpart, currently just in use in the add year function below
+monthMap = {
+	"January": 1,
+	"February": 2,
+	"March": 3,
+	"April": 4,
+	"May": 5,
+	"June": 6,
+	"July": 7,
+	"August": 8,
+	"September": 9,
+	"October": 10,
+	"November": 11,
+	"December": 12
+}
+
 # Adds the correct year, this function requires the month be in the proper format first
-# Change this function to dynamically detect the year
 def add_year(results):
 	formatted = []
+	now = datetime.now()
 	for date in results: 
 		components = date.split()
 		month = components[0]
-		if month == "February" or month == "March" or month == "April" or month == "May" or month == "June" or month == "July" or month == "August" or "September" or month == "October" or month == "November":
-			year = " 2015"
-		elif month == "January":
-			year = " 2016"
-		formatted.append(date + year)
+		t = monthMap[month]
+		if (t < now.month):
+			year = now.year + 1
+		else:
+			year = now.year
+		formatted.append(date + " " + str(year))
 	return formatted
