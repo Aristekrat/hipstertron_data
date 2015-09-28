@@ -20,20 +20,26 @@ class PepsiTestCase(unittest.TestCase):
 	def test_raw_html_list_length(self):
 		self.assertEqual(len(self.artists_raw), len(self.dates_raw))
 
-	def test_second_transformation_length(self):
-		self.assertEqual(len(pepsi_center_trace.artists_format_special), len(pepsi_center_trace.dates_format_special))
+	# def test_second_transformation_length(self):
+	# 	self.assertEqual(len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_format_special))
 
 	def test_dates_culled_length(self):
-		self.assertEqual(len(pepsi_center_trace.artists_format_special), len(pepsi_center_trace.dates_culled))
+		self.assertEqual(len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_culled))
 
 	def test_dates_stripped_chars_length(self):
-		self.assertEqual(len(pepsi_center_trace.artists_format_special), len(pepsi_center_trace.dates_stripped_chars))		
+		self.assertEqual(len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_stripped_chars))		
 
 	def test_dates_format_year(self):
-		self.assertEqual(len(pepsi_center_trace.artists_format_special), len(pepsi_center_trace.dates_format_year))		
+		self.assertEqual(len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_format_year))		
+
+	def test_ticket_prices_without_fees(self):
+		self.assertEqual(len(pepsi_center_trace.ticket_prices_without_fees), len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_datetime))
+
+	def test_ticket_prices(self):
+		self.assertEqual(len(pepsi_center_trace.ticket_prices), len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_datetime))
 
 	def test_final_list_length(self):
-		self.assertEqual(len(pepsi_center_trace.artists_format_special), len(pepsi_center_trace.dates_datetime), len(pepsi_center_trace.ticket_links_patched))
+		self.assertEqual(len(pepsi_center_trace.artists_stripped_chars), len(pepsi_center_trace.dates_datetime), len(pepsi_center_trace.ticket_links))
 
 	def tearDown(self):
 		self.source.close()

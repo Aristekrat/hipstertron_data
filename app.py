@@ -31,11 +31,21 @@ def prep_concert_response(results):
 def default():
     return "You've reached Hipster Tron's data server. Unfortunately, there's nothing for people to do here, just scripts. Sowwy :-("
 
-@app.route('/getConcerts/<int:result_count>/<int:offset_number>', methods=['GET', 'OPTIONS'])
+@app.route('/get-concerts/<int:result_count>/<int:offset_number>', methods=['GET', 'OPTIONS'])
 def returnConcerts(result_count, offset_number):
 	concerts = models.Denver_Concerts.query.order_by(models.Denver_Concerts.showDate).limit(result_count).offset(offset_number)
 	response = prep_concert_response(concerts)
 	return jsonify(concertListings=response)
+
+@app.route('/get-concerts', methods=['GET', 'OPTIONS'])
+def returnAllConcerts():
+	try:
+		concerts = models.Denver_Concerts.query.order_by(models.Denver_Concerts.showDate)
+		response = prep_concert_response(concerts)
+		return jsonify(concertListings=response)
+	except: 
+		response = make_response("FU", 500)
+		return response
 
 @app.route('/sendEmail', methods=['POST'])
 def sendEmail():
