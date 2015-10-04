@@ -2,7 +2,7 @@ import re
 import sys
 sys.path.append("..")
 from libraries import regex_library
-from memory_profiler import profile
+#from memory_profiler import profile
 
 #Pretty similar to the artist scraping function, it just involves an additional for loop.
 #Can this be converted into a generic link scraping function? Maybe combined with the function below as well

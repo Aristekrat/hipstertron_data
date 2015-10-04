@@ -1,6 +1,6 @@
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
-from memory_profiler import profile
+#from memory_profiler import profile
 
 header = {
 	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36",
