@@ -1,5 +1,6 @@
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
+from memory_profiler import profile
 
 header = {
 	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36",
@@ -19,16 +20,31 @@ def strip_html(results):
 
 # Get Urls and convert to soup object. Works on many or one url
 def get_pages(urls):
-	soup_page = []
+	soup_pages = []
+	# This block uses ~70MB of memory. The for loop uses no memory	
+	for url in urls:
+		try: 
+			# ~24
+			req = Request(url, headers = header)
+			soupified = BeautifulSoup(urlopen(req))
+			# Accumulator is ~ 43
+			soup_pages.append(soupified)
+		except:
+			continue
+	return soup_pages
+
+# This function returns just the selected results from a full BS4 obj and converts the BS4 obj into a string
+# This function is more limited than get_pages but it is also significantly more memory efficient
+def get_results_from_pages(urls, selector):
+	soup_strings = []
 	for url in urls:
 		try: 
 			req = Request(url, headers = header)
-			page = urlopen(req)
-			soupified = BeautifulSoup(page)
-			soup_page.append(soupified)
+			soup_strings.append(str(BeautifulSoup(urlopen(req)).select(selector)))
 		except:
 			continue
-	return soup_page
+	return soup_strings
+
 
 # The standard function for both artist and date scraping
 def generic_scrape(pages, selector):

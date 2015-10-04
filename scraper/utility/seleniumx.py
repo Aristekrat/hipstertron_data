@@ -33,6 +33,7 @@ def initialize_selenium(urls, driver, selector=None):
 		actions.perform()
 
 # Initializes Selenium. Not usable other than clicking buttons and pages without buttons. 
+# TODO - follow up on this function, make sure it's fully implemented in place of the less flexible function above
 def new_and_better(urls, driver, times=0, selector=None):
 	driver.get(urls[0])
 	if (selector):

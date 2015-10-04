@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import seleniumx, datex, utilityx, ticket_linksx, site_specificx, tracex, soupx
+from utility import seleniumx, datex, utilityx, ticket_linksx, ticket_pricesx, site_specificx, tracex, soupx
 from libraries import selector_library, urls_library
 
 mode = tracex.determine_file_mode()
@@ -51,17 +51,16 @@ tracex.create_trace(mode, "fiddlers_green", "ticket_links", ticket_links)
 
 
 # Concert Prices Section #
-ticket_pages = soupx.get_pages(ticket_links)
+ticket_prices_raw = soupx.get_results_from_pages(ticket_links, selectors['ticket_price'])
+tracex.create_trace(mode, "fiddlers_green", "ticket_prices_raw", ticket_prices_raw)
 
-ticket_prices_raw = soupx.generic_scrape(ticket_pages, selectors['ticket_price'])
-
-ticket_prices_without_fees = ticket_linksx.find_prices(ticket_prices_raw)
+ticket_prices_without_fees = ticket_pricesx.find_prices(ticket_prices_raw)
 tracex.create_trace(mode, "fiddlers_green", "ticket_prices_without_fees", ticket_prices_without_fees)
 
-ticket_prices_patched = ticket_linksx.patch_no_results_found(ticket_prices_raw, ticket_prices_without_fees)
+ticket_prices_patched = ticket_pricesx.patch_no_results_found(ticket_prices_raw, ticket_prices_without_fees)
 tracex.create_trace(mode, "fiddlers_green", "ticket_prices_patched", ticket_prices_patched)
 
-ticket_prices = ticket_linksx.add_fee_estimate(ticket_prices_patched)
+ticket_prices = ticket_pricesx.add_fee_estimate(ticket_prices_patched)
 tracex.create_trace(mode, "fiddlers_green", "ticket_prices", ticket_prices)
 
 

@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from utility import soupx, datex, utilityx, ticket_linksx, tracex, site_specificx
+from utility import soupx, datex, utilityx, ticket_linksx, ticket_pricesx, tracex, site_specificx
 from libraries import selector_library, urls_library
 
 mode = tracex.determine_file_mode()
@@ -53,7 +53,8 @@ tracex.create_trace(mode, "fillmore", "ticket_links", ticket_links)
 
 
 # Concert Prices Section #
-ticket_prices = ticket_linksx.no_prices(ticket_links)
+# Investigate why Fillmore doesn't get prices
+ticket_prices = ticket_pricesx.no_prices(ticket_links)
 tracex.create_trace(mode, "fillmore", "ticket_prices", ticket_prices)
 
 
