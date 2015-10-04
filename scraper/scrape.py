@@ -11,6 +11,7 @@ exec(compile(open('scraper/site_specific/first_bank.py', "rb").read(), 'first_ba
 exec(compile(open('scraper/site_specific/paramount.py', "rb").read(), 'paramount.py', 'exec'))
 exec(compile(open('scraper/site_specific/fiddlers_green.py', "rb").read(), 'fiddlers_green.py', 'exec'))
 exec(compile(open('scraper/site_specific/fox.py', "rb").read(), 'fox.py', 'exec'))
-exec(compile(open('scraper/site_specific/pepsi_center_selenium.py', "rb").read(), 'pepsi_center_selenium.py', 'exec'))
+# Pepsi is failing and retrying endlessly on the remote, was working on my local.
+#exec(compile(open('scraper/site_specific/pepsi_center_selenium.py', "rb").read(), 'pepsi_center_selenium.py', 'exec'))
 
 print("Scrape completed")
